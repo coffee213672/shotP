@@ -47,7 +47,7 @@ cc.Class({
             var rnum = this.getcolor();
             var card_color = 'hf_0'+Math.ceil(rnum/13);
             var card_num = this.getnum(rnum%13);
-            this.SendToGlobal(Wcard,card_num)
+            this.SendToGlobal(Wcard,rnum)
             cc.loader.loadRes("Card/"+card_color, cc.SpriteFrame, function (err, spriteFrame) {
                 card.children[2].getComponent(cc.Sprite).spriteFrame = spriteFrame;
             });
@@ -100,18 +100,9 @@ cc.Class({
         },4000)
 
         setTimeout(function(){
-            var together = cc.spawn(cc.moveTo(0.3,cc.v2(242,-199)),cc.scaleTo(0.3,0.35,0.35))
+            var together = cc.sequence(cc.spawn(cc.moveTo(0.3,cc.v2(242,-199)),cc.scaleTo(0.3,0.35,0.35)),cc.callFunc(function(){Global.ShotFlag = true},this))
             Jerry.node.runAction(together)
         },6000)
-
-        this.callback = function() {
-            if(Global.card1 != 0 && Global.card2 != 0 && Global.card3 != 0){
-                this.ball.emit('StartFlag', true);
-                this.unschedule(this.callback);
-            }
-        }
-
-        this.schedule(this.callback, 1);
     },
 
     // update (dt) {},
