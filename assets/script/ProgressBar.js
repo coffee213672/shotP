@@ -25,7 +25,6 @@ cc.Class({
         setTimeout(function(){
             progressBar.progress = (percent / 100);
             barvalue.string = percent+'%';
-            cc.log(percent+'%')
         },50 + (Xtime*30))
     },
 

@@ -734,7 +734,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 52.39,
+      "width": 44.69,
       "height": 40
     },
     "_anchorPoint": {
@@ -781,8 +781,8 @@
     "_srcBlendFactor": 1,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "0 %",
-    "_N$string": "0 %",
+    "_string": "0%",
+    "_N$string": "0%",
     "_fontSize": 35,
     "_lineHeight": 40,
     "_enableWrapText": true,
@@ -1213,7 +1213,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 52.39,
+      "width": 44.69,
       "height": 40
     },
     "_anchorPoint": {
@@ -1260,8 +1260,8 @@
     "_srcBlendFactor": 1,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "0 %",
-    "_N$string": "0 %",
+    "_string": "0%",
+    "_N$string": "0%",
     "_fontSize": 35,
     "_lineHeight": 40,
     "_enableWrapText": true,
@@ -1692,7 +1692,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 52.39,
+      "width": 44.69,
       "height": 40
     },
     "_anchorPoint": {
@@ -1739,8 +1739,8 @@
     "_srcBlendFactor": 1,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "0 %",
-    "_N$string": "0 %",
+    "_string": "0%",
+    "_N$string": "0%",
     "_fontSize": 35,
     "_lineHeight": 40,
     "_enableWrapText": true,
@@ -3169,10 +3169,10 @@
       "__id__": 43
     },
     "card2": {
-      "__id__": 52
+      "__id__": 61
     },
     "card3": {
-      "__id__": 61
+      "__id__": 52
     },
     "ball": {
       "__id__": 71

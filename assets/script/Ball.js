@@ -59,10 +59,9 @@ cc.Class({
     },
 
     getpathnum:function(){
-        cc.log(Global.card1+','+Global.card2+','+Global.card3)
-        var num1 = this.getnum(Global.card1%13);
-        var num2 = this.getnum(Global.card2%13);
-        var num3 = this.getnum(Global.card3%13);
+        var num1 = this.getnum(Global.card[0]%13);
+        var num2 = this.getnum(Global.card[1]%13);
+        var num3 = this.getnum(Global.card[2]%13);
         if((num1 < num2 && num3 > num2) || (num1 > num2 && num3 < num2)){
             return 1;
         }else if(num1 == num2 || num3 == num2){
@@ -97,7 +96,6 @@ cc.Class({
                 this.ballshot();
                 this.unschedule(this.callback);
             }
-            
         }
 
         this.schedule(this.callback, 1);
