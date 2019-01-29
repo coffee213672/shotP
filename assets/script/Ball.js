@@ -81,7 +81,7 @@ cc.Class({
     ballshot:function(){
         var  wtype = this.getpathnum();
         var action = cc.rotateBy(0.5,1020);
-        var ballact = this.getpath(wtype);
+        var ballact = this.getpath(1);
         var ballactX = cc.cardinalSplineTo(0.5,ballact,0)
         this.shoot();
         this.node.runAction(cc.spawn(action,ballactX)) //,cc.callFunc(function(){cc.log(this.getComponent("cc.RigidBody").type = cc.RigidBodyType.Dynamic)},this)
