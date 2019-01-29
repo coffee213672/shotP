@@ -76,7 +76,7 @@ cc.Class({
         }
 
         setTimeout(function(){
-            var together = cc.sequence(cc.spawn(cc.moveTo(0.3,cc.v2(242,-199)),cc.scaleTo(0.3,0.35,0.35)),cc.callFunc(function(){Global.ShotFlag = true},this))
+            var together = cc.sequence(cc.spawn(cc.moveTo(0.5,cc.v2(242,-199)),cc.scaleTo(0.5,0.35,0.35)),cc.callFunc(function(){Global.ShotFlag = true},this))
             Jerry.node.runAction(together)
         },6000)
     },

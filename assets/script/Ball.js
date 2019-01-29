@@ -59,14 +59,16 @@ cc.Class({
     },
 
     getpathnum:function(){
+        cc.log(Global.card)
         var num1 = this.getnum(Global.card[0]%13);
         var num2 = this.getnum(Global.card[1]%13);
         var num3 = this.getnum(Global.card[2]%13);
-        if((num1 < num2 && num3 > num2) || (num1 > num2 && num3 < num2)){
+        cc.log(num1, num2, num3)
+        if((num1 < num3 && num2 > num3) || (num1 > num3 && num2 < num3)){
             return 1;
-        }else if(num1 == num2 || num3 == num2){
+        }else if(num1 == num3 || num3 == num2){
             return 2;
-        }else if((num1 < num2 && num2 > num3) || (num1 > num2 && num3 > num2)){
+        }else if((num1 < num3 && num3 > num2) || (num1 > num3 && num2 > num3)){
             return 3;
         }
     },
