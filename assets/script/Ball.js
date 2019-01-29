@@ -63,7 +63,7 @@ cc.Class({
         var num1 = this.getnum(Global.card1%13);
         var num2 = this.getnum(Global.card2%13);
         var num3 = this.getnum(Global.card3%13);
-        if(num1 < num2 && num3 > num2){
+        if((num1 < num2 && num3 > num2) || (num1 > num2 && num3 < num2)){
             return 1;
         }else if(num1 == num2 || num3 == num2){
             return 2;
