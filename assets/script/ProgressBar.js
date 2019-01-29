@@ -6,13 +6,6 @@ cc.Class({
         
     },
 
-    /*
-        for(var i=this.old_values[Ptype];i<=newBarV;i++){
-            this.wait(progressbar,i,bar_string,countT)
-            countT++
-        }
-    */
-
     progressbarMove:function(Ptype,newBarV,progressbar,bar_string){
         var countT = 0
         if(newBarV > this.old_value[Ptype]){
@@ -43,19 +36,9 @@ cc.Class({
 
     start () {
         this.schedule(function(){
-            if(Global.progressbar_v[0] != this.old_value[0]){
-                this.progressbarMove(0,Global.progressbar_v[0],this.node.children[0].children[0].getComponent(cc.ProgressBar),this.node.children[0].children[0].children[2].getComponent(cc.Label))
-                this.old_value[0] = Global.progressbar_v[0]
-            }
-
-            if(Global.progressbar_v[1] != this.old_value[1]){
-                this.progressbarMove(1,Global.progressbar_v[1],this.node.children[1].children[0].getComponent(cc.ProgressBar),this.node.children[1].children[0].children[2].getComponent(cc.Label))
-                this.old_value[1] = Global.progressbar_v[1]
-            }
-
-            if(Global.progressbar_v[2] != this.old_value[2]){
-                this.progressbarMove(2,Global.progressbar_v[2],this.node.children[2].children[0].getComponent(cc.ProgressBar),this.node.children[2].children[0].children[2].getComponent(cc.Label))
-                this.old_value[2] = Global.progressbar_v[2]
+            for(var i in Global.progressbar_v){
+                this.progressbarMove(i,Global.progressbar_v[i],this.node.children[i].children[0].getComponent(cc.ProgressBar),this.node.children[i].children[0].children[2].getComponent(cc.Label))
+                this.old_value[i] = Global.progressbar_v[i]
             }
         }, 2);
     },
