@@ -3,7 +3,10 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-
+        Pillar:{
+            default:null,
+            type:cc.RigidBody
+        }
     },
 
     shoot:function(){
@@ -17,7 +20,21 @@ cc.Class({
         var x = 1- n/10
         setTimeout(function(){
             xdx.node.runAction(cc.scaleTo(0.1,x,x))
-        },n*65)
+            if(n == 7) xdx.shootX();
+        },n*50)
+    },
+
+    shootX:function(){
+        let xdx = this
+        let act = this.act_back();
+       
+        // for(let i=0;i<6;i++){
+            // let x = 0.3 - i*5/100
+            setTimeout(function(){
+                xdx.node.runAction(cc.cardinalSplineTo(0.3,act,0))
+                // xdx.node.runAction(cc.scaleTo(0.1,x,x))
+            },1000)
+        // }
     },
 
     getpath:function(type){
@@ -41,7 +58,17 @@ cc.Class({
                 act.push(cc.v2(143,28))
                 act.push(cc.v2(123,56))
                 act.push(cc.v2(99,91))
-                act.push(cc.v2(64,119))
+                act.push(cc.v2(68,119))
+                /* 
+                    act.push(cc.v2(91.8,140))
+                    act.push(cc.v2(135.5,160.8))
+                    act.push(cc.v2(186.2,183.9))
+                    act.push(cc.v2(256.2,199))
+                    act.push(cc.v2(329.3,200))
+                    act.push(cc.v2(-167,-176))
+                    act.push(cc.v2(-217,-252))
+                    act.push(cc.v2(-244,-372))
+                */
             break;
             case 3:
                 act.push(cc.v2(86,-210))
@@ -58,12 +85,21 @@ cc.Class({
         
     },
 
+    act_back:function(){
+        var act = new Array();
+        act.push(cc.v2(48.7,141))
+        act.push(cc.v2(11.5,182))
+        act.push(cc.v2(-1.8,202))
+        act.push(cc.v2(-17.8,225))
+        act.push(cc.v2(-30.7,246))
+        act.push(cc.v2(-59.5,289))
+        return act
+    },
+
     getpathnum:function(){
-        cc.log(Global.card)
         var num1 = this.getnum(Global.card[0]%13);
         var num2 = this.getnum(Global.card[1]%13);
         var num3 = this.getnum(Global.card[2]%13);
-        cc.log(num1, num2, num3)
         if((num1 < num3 && num2 > num3) || (num1 > num3 && num2 < num3)){
             return 1;
         }else if(num1 == num3 || num3 == num2){
@@ -81,16 +117,39 @@ cc.Class({
 
     ballshot:function(){
         var  wtype = this.getpathnum();
-        var action = cc.rotateBy(0.5,1020);
-        var ballact = this.getpath(wtype);
-        var ballactX = cc.cardinalSplineTo(0.5,ballact,0)
+        var action = cc.rotateBy(2,4096);
+        var ballact = this.getpath(2);
+        var ballactX = cc.cardinalSplineTo(0.7,ballact,0)
         this.shoot();
         this.node.runAction(cc.spawn(action,ballactX)) //,cc.callFunc(function(){cc.log(this.getComponent("cc.RigidBody").type = cc.RigidBodyType.Dynamic)},this)
     },
 
     onLoad () {
-        cc.director.getPhysicsManager().enabled = true;
+        let physicsManager = cc.director.getPhysicsManager();
+        physicsManager.enabled = true;
+        physicsManager.debugDrawFlags = 0
+            // cc.PhysicsManager.DrawBits.e_aabbBit |
+            // cc.PhysicsManager.DrawBits.e_jointBit |
+            // cc.PhysicsManager.DrawBits.e_shapeBit;
+        
+        // cc.log(this.getComponent(cc.RigidBody).enabledContactListener)
+        // cc.log(this.Pillar.getComponent(cc.RigidBody).enabledContactListener)
+
+        var bang = cc.director.getCollisionManager();
+        bang.enabled = true;
+
+        // bang.enabledDebugDraw = true;
+        // bang.enabledDrawBoundingBox = true
     },
+
+    onBeginContact: function (contact, selfCollider, otherCollider) {
+        
+    },
+
+    onEndContact: function (contact, selfCollider, otherCollider) {
+        // cc.log(contact, selfCollider, otherCollider)
+    },
+
 
     start () {
         this.callback = function() {
