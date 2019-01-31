@@ -6,8 +6,15 @@ cc.Class({
        
     },
 
+    gameOver:function(){
+        Global.test = false
+        cc.director.loadScene('game_shoot');
+    },
 
-    // onLoad () {},
+    onLoad () {
+        this.timerX = 0
+        
+    },
 
     start () {
         this.schedule(function(){
@@ -17,5 +24,14 @@ cc.Class({
         },5)
     },
 
-    // update (dt) {},
+    update (dt) {
+        if(Global.test){
+            this.timerX += dt
+        }
+
+        if(this.timerX > 3){
+            this.gameOver();
+            this.timerX = 0;
+        }
+    },
 });

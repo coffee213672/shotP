@@ -63,6 +63,7 @@ cc.Class({
         Global.card = [0,0,0];
         this.numArray = new Array();
         this.SendToBallFlag = false;
+        Global.ShotFlag = false
     },
 
     start () {
