@@ -3,7 +3,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-       
+
     },
 
     gameOver:function(){
@@ -13,7 +13,6 @@ cc.Class({
 
     onLoad () {
         this.timerX = 0
-        
     },
 
     start () {
