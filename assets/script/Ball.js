@@ -52,7 +52,7 @@ cc.Class({
         var act = new Array();
         switch (type){
             case 1:
-                act = [cc.v2(70,-209),cc.v2(118,-146),cc.v2(125,-96),cc.v2(130,-55),cc.v2(103,-16),cc.v2(78,5),cc.v2(41,20),cc.v2(0,31)]
+                act = [cc.v2(140,-170),cc.v2(140,-34),cc.v2(0,-8)] //[cc.v2(70,-209),cc.v2(118,-146),cc.v2(125,-96),cc.v2(130,-55),cc.v2(103,-16),cc.v2(78,5),cc.v2(41,20),cc.v2(0,31)]
             break;
             case 2:
                 act = [cc.v2(70,-191),cc.v2(98,-128),cc.v2(125,-67),cc.v2(147,-20),cc.v2(143,28),cc.v2(123,56),cc.v2(99,91),cc.v2(68,119),cc.v2(41.5,141),cc.v2(21.6,162),cc.v2(0.1,182),cc.v2(-21.1,202),cc.v2(-42.1,225),cc.v2(-65,246),cc.v2(-90,271),cc.v2(-113.2,289)]
@@ -102,7 +102,7 @@ cc.Class({
         this.pathtype = this.getpathnum();
         var ballact = this.getpath(this.pathtype);
         var action = cc.rotateBy(1,1080);
-        var ballactX = cc.cardinalSplineTo(1,ballact,0)
+        var ballactX = cc.catmullRomTo(1,ballact,0) //catmullRomTo
         this.shoot();
         this.node.runAction(cc.spawn(action,ballactX).easing(cc.easeInOut(1.0))) //,cc.callFunc(function(){cc.log(this.getComponent("cc.RigidBody").type = cc.RigidBodyType.Dynamic)},this)
     },
