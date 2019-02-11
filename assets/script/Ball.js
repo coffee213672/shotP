@@ -47,13 +47,13 @@ cc.Class({
         switch (type){
             case 1:
                 cc.director.getCollisionManager().enabled = false
-                this.moveSec = 0.7
-                this.angle = 720
-                act = [cc.v2(0,-252),cc.v2(132,-20),cc.v2(62,14),cc.v2(0,-28)] //[cc.v2(70,-209),cc.v2(118,-146),cc.v2(125,-96),cc.v2(130,-55),cc.v2(103,-16),cc.v2(78,5),cc.v2(41,20),cc.v2(0,31)]
+                this.moveSec = 0.9
+                this.angle = 960
+                act = [cc.v2(0,-252),cc.v2(132,-20),cc.v2(62,14),cc.v2(0,-28),cc.v2(-33,-67)] //[cc.v2(70,-209),cc.v2(118,-146),cc.v2(125,-96),cc.v2(130,-55),cc.v2(103,-16),cc.v2(78,5),cc.v2(41,20),cc.v2(0,31)]
             break;
             case 2:
                 cc.director.getCollisionManager().enabled = true
-                this.moveSec = 0.7
+                this.moveSec = 0.5
                 this.angle = 720
                 act = [cc.v2(0,-252),cc.v2(70,-191),cc.v2(98,-128),cc.v2(125,-67),cc.v2(147,-20),cc.v2(143,28),cc.v2(123,56),cc.v2(99,91),cc.v2(68,119)]
             break;
@@ -99,7 +99,7 @@ cc.Class({
 
     onLoad () {
         
-        cc.director.getCollisionManager().enabledDebugDraw = true    
+        cc.director.getCollisionManager().enabledDebugDraw = false    
 
         this.pathtype = 0;
         this.moveSec = 0;
@@ -112,9 +112,9 @@ cc.Class({
         var Jerry = this
         this.Pillar.children[0].active = true
 
-        var action = cc.rotateBy(0.4,540);
+        var action = cc.rotateBy(0.3,540);
         var act2 = [cc.v2(41.5,141),cc.v2(21.6,162),cc.v2(0.1,182),cc.v2(-21.1,202),cc.v2(-42.1,225),cc.v2(-65,246),cc.v2(-90,271),cc.v2(-113.2,289)];
-        var ballactX = cc.cardinalSplineTo(0.4,act2,0)
+        var ballactX = cc.cardinalSplineTo(0.3,act2,0)
         setTimeout(function(){
             Jerry.node.runAction(cc.spawn(action,ballactX).easing(cc.easeIn(1.0)))
         },70)
