@@ -17,9 +17,11 @@ cc.Class({
 
     start () {
         this.schedule(function(){
-            Global.progressbar_v[0] = Math.floor(Math.random()*100);
-            Global.progressbar_v[1] = Math.floor(Math.random()*(100-Global.progressbar_v[0]));
-            Global.progressbar_v[2] = 100 - Global.progressbar_v[0] - Global.progressbar_v[1]
+            var JerryProgressAry = new Array();
+            JerryProgressAry[0] = Math.floor(Math.random()*100);
+            JerryProgressAry[1] = Math.floor(Math.random()*(100-JerryProgressAry[0]));
+            JerryProgressAry[2] = 100 - JerryProgressAry[0] - JerryProgressAry[1];
+            cc.sys.localStorage.setItem('progressbar',JSON.stringify(JerryProgressAry))
         },5)
     },
 

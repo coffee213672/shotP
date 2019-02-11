@@ -27,11 +27,14 @@ cc.Class({
     getcolor:function(){
         var randnum = 0;
         do{
-            randnum = Math.floor(Math.random()*52) + 1;
+            do{
+                randnum = Math.floor(Math.random()*52) + 1;
+            }
+            while(this.numArray.indexOf(randnum) != -1)
+            this.numArray.push(randnum);
         }
-        while(this.numArray.indexOf(randnum) != -1)
-        this.numArray.push(randnum);
-        return randnum
+        while(this.numArray.length < 3)
+        cc.sys.localStorage.setItem('CardNum',JSON.stringify(this.numArray));
     },
 
     getnum:function(n){
@@ -44,7 +47,7 @@ cc.Class({
         var act = cc.sequence(cc.scaleTo(0.3,0,1),cc.callFunc(function(){
             card.children[0].active = false;
             card.children[1].active = true;
-            var rnum = this.getcolor();
+            var rnum = JSON.parse(cc.sys.localStorage.getItem('CardNum'))[Wcard]
             var card_color = 'hf_0'+Math.ceil(rnum/13);
             var card_num = this.getnum(rnum%13);
             Global.card[Wcard] = rnum
@@ -64,22 +67,39 @@ cc.Class({
         this.numArray = new Array();
         this.SendToBallFlag = false;
         Global.ShotFlag = false
+        cc.sys.localStorage.setItem('CardNum',JSON.stringify([0,0,0]));
     },
 
     start () {
         var Jerry = this
-        for(let i in Global.card){
-            let Nnum = parseInt(i) + 1;
-            let act = this.JerryOpenCard(this['card'+Nnum],i)
-            setTimeout(function(){
-                Jerry['card'+Nnum].runAction(act)
-            },(parseInt(i)+2)*1000)
+        setTimeout(function(){
+            Jerry.getcolor();
+        },3000)
+
+        this.callback = function(){
+            var CardNumAry = JSON.parse(cc.sys.localStorage.getItem('CardNum'))
+            cc.log(CardNumAry.indexOf(0))
+            if(CardNumAry.indexOf(0) == -1){
+                cc.log('I destroyed')
+                Global.card = CardNumAry;
+                // var Jerry = this
+                for(let i in Global.card){
+                    let Nnum = parseInt(i) + 1;
+                    let act = this.JerryOpenCard(this['card'+Nnum],i)
+                    setTimeout(function(){
+                        Jerry['card'+Nnum].runAction(act)
+                    },(parseInt(i)+2)*1000)
+                }
+
+                setTimeout(function(){
+                    var together = cc.sequence(cc.spawn(cc.moveTo(0.5,cc.v2(242,-199)),cc.scaleTo(0.5,0.35,0.35)),cc.callFunc(function(){Global.ShotFlag = true},this))
+                    Jerry.node.runAction(together)
+                },6000)
+            this.unschedule(this.callback)
+            }
         }
 
-        setTimeout(function(){
-            var together = cc.sequence(cc.spawn(cc.moveTo(0.5,cc.v2(242,-199)),cc.scaleTo(0.5,0.35,0.35)),cc.callFunc(function(){Global.ShotFlag = true},this))
-            Jerry.node.runAction(together)
-        },6000)
+        this.schedule(this.callback, 1);
     },
 
     // update (dt) {},

@@ -30,15 +30,16 @@ cc.Class({
     },
 
     onLoad () {
-        Global.progressbar_v = [0,0,0]
+        cc.sys.localStorage.setItem('progressbar',JSON.stringify([0,0,0]))
         this.old_value = [0,0,0]
     },
 
     start () {
         this.schedule(function(){
-            for(var i in Global.progressbar_v){
-                this.progressbarMove(i,Global.progressbar_v[i],this.node.children[i].children[0].getComponent(cc.ProgressBar),this.node.children[i].children[0].children[2].getComponent(cc.Label))
-                this.old_value[i] = Global.progressbar_v[i]
+            var JerryProgressAry = JSON.parse(cc.sys.localStorage.getItem('progressbar'))
+            for(var i in JerryProgressAry){
+                this.progressbarMove(i,JerryProgressAry[i],this.node.children[i].children[0].getComponent(cc.ProgressBar),this.node.children[i].children[0].children[2].getComponent(cc.Label))
+                this.old_value[i] = JerryProgressAry[i]
             }
         }, 2);
     },
