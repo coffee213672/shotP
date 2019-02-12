@@ -72,15 +72,13 @@ cc.Class({
 
     start () {
         var Jerry = this
-        setTimeout(function(){
-            Jerry.getcolor();
-        },3000)
+        // setTimeout(function(){
+        //     Jerry.getcolor();
+        // },3000)
 
         this.callback = function(){
             var CardNumAry = JSON.parse(cc.sys.localStorage.getItem('CardNum'))
-            cc.log(CardNumAry.indexOf(0))
             if(CardNumAry.indexOf(0) == -1){
-                cc.log('I destroyed')
                 Global.card = CardNumAry;
                 // var Jerry = this
                 for(let i in Global.card){
