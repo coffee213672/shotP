@@ -22,7 +22,7 @@ cc.Class({
     },
 
     wait:function(progressBar,percent,barvalue,Xtime){
-        if(Global.test) return
+        if(Global.test) return  //#1 避免重新loading出現錯誤
         setTimeout(function(){
             progressBar.progress = (percent / 100);
             barvalue.string = percent+'%';
