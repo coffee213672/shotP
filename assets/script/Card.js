@@ -88,7 +88,7 @@ cc.Class({
 
     ActiveLoadDBA:function(){
         var DBA = this.NodeDBA.getComponent(dragonBones.ArmatureDisplay);
-        var info = Global.infoRP[Global.ShotType]
+        var info = Global.infoRP[Global.ShotType-1]
         cc.loader.loadRes(info[0], dragonBones.DragonBonesAsset, (err, res) => {
             cc.loader.loadRes(info[1], dragonBones.DragonBonesAtlasAsset, (err2, res2) => {
                 DBA.dragonAsset = res;
@@ -101,7 +101,6 @@ cc.Class({
     },
 
     chgtype:function(){
-        cc.log('come in')
         Global.ShotFlag = true
     },
 
@@ -123,7 +122,6 @@ cc.Class({
             var CardNumAry = JSON.parse(cc.sys.localStorage.getItem('CardNum'))
             if(CardNumAry.indexOf(0) == -1){
                 Global.card = CardNumAry;
-                // var Jerry = this
                 for(let i in Global.card){
                     let Nnum = parseInt(i) + 1;
                     let act = this.JerryOpenCard(this['card'+Nnum],i)
@@ -131,7 +129,6 @@ cc.Class({
                         Jerry['card'+Nnum].runAction(act)
                     },(parseInt(i)+2)*1000)
                 }
-
                 setTimeout(function(){
                     var together = cc.sequence(cc.spawn(cc.moveTo(0.5,cc.v2(242,-199)),cc.scaleTo(0.5,0.35,0.35)),cc.callFunc(function(){
                         Jerry.getShotType();
@@ -142,7 +139,6 @@ cc.Class({
             this.unschedule(this.callback)
             }
         }
-
         this.schedule(this.callback, 1);
     },
 
