@@ -35,13 +35,22 @@ cc.Class({
     },
 
     start () {
-        this.schedule(function(){
-            var JerryProgressAry = JSON.parse(cc.sys.localStorage.getItem('progressbar'))
-            for(var i in JerryProgressAry){
-                this.progressbarMove(i,JerryProgressAry[i],this.node.children[i].children[0].getComponent(cc.ProgressBar),this.node.children[i].children[0].children[2].getComponent(cc.Label))
-                this.old_value[i] = JerryProgressAry[i]
-            }
-        }, 2);
+        this.callback = function(){
+            if(!Global.StartFlag){
+                var JerryProgressAry = JSON.parse(cc.sys.localStorage.getItem('progressbar'))
+                for(var i in JerryProgressAry){
+                    this.progressbarMove(i,JerryProgressAry[i],this.node.children[i].children[0].getComponent(cc.ProgressBar),this.node.children[i].children[0].children[2].getComponent(cc.Label))
+                    this.old_value[i] = JerryProgressAry[i]
+                }
+            }else{
+                this.node.children[0].runAction(cc.fadeOut(0.8))
+                this.node.children[1].runAction(cc.fadeOut(0.8))
+                this.node.children[2].runAction(cc.fadeOut(0.8))
+                this.unschedule(this.callback)
+            } 
+        }
+
+        this.schedule(this.callback, 2);
     },
 
     // update (dt) {},

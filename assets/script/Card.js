@@ -3,30 +3,15 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        card1:{
-            default: null,
-            type:cc.Node
-        },
+        card1:cc.Node,
 
-        card2:{
-            default: null,
-            type:cc.Node
-        },
+        card2:cc.Node,
 
-        card3:{
-            default: null,
-            type:cc.Node
-        },
+        card3:cc.Node,
 
-        ball:{
-            default: null,
-            type:cc.Node
-        },
+        ball:cc.Node,
 
-        NodeDBA:{
-            default: null,
-            type:cc.Node
-        },
+        NodeDBA:cc.Node,
     },
 
     getThreeNum:function(){
@@ -121,6 +106,7 @@ cc.Class({
         this.callback = function(){
             var CardNumAry = JSON.parse(cc.sys.localStorage.getItem('CardNum'))
             if(CardNumAry.indexOf(0) == -1){
+                Global.StartFlag = true
                 Global.card = CardNumAry;
                 for(let i in Global.card){
                     let Nnum = parseInt(i) + 1;

@@ -3,10 +3,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        period:{
-            default:null,
-            type:cc.Label
-        },
+        period:cc.Label,
 
         button1:cc.Button,
 
@@ -41,8 +38,6 @@ cc.Class({
                 cc.sys.localStorage.setItem('CardNum',JSON.stringify([1,29,17]))
         }
     },
-
-    
 
     start () {
         this.schedule(function(){

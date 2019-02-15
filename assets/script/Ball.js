@@ -3,15 +3,9 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        Pillar:{
-            default:null,
-            type:cc.Node
-        },
+        Pillar:cc.Node,
 
-        mask:{
-            default:null,
-            type:cc.Node
-        },
+        mask:cc.Node,
     },
 
     shoot:function(){

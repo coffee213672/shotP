@@ -1,5 +1,6 @@
 module.exports = {
     card: [0,0,0],
+    StartFlag: false,
     ShotFlag: false,
     test:false,
     sn:0,
