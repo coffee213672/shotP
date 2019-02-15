@@ -22,9 +22,14 @@ cc.Class({
             default: null,
             type:cc.Node
         },
+
+        NodeDBA:{
+            default: null,
+            type:cc.Node
+        },
     },
 
-    getcolor:function(){
+    getThreeNum:function(){
         var randnum = 0;
         do{
             do{
@@ -41,6 +46,25 @@ cc.Class({
         if(n == 0) n = 13
         else n = n
         return 'hf_'+n
+    },
+
+    getnumN:function(n){
+        if(n == 0) n = 13
+        else n = n
+        return n
+    },
+
+    getShotType:function(){
+        var num1 = this.getnumN(Global.card[0]%13);
+        var num2 = this.getnumN(Global.card[1]%13);
+        var num3 = this.getnumN(Global.card[2]%13);
+        if((num1 < num3 && num2 > num3) || (num1 > num3 && num2 < num3)){
+            Global.ShotType = 1
+        }else if(num1 == num3 || num3 == num2){
+            Global.ShotType = 2
+        }else if((num1 < num3 && num3 > num2) || (num1 > num3 && num2 > num3)){
+            Global.ShotType = 3
+        }
     },
 
     JerryOpenCard:function(card,Wcard){
@@ -62,6 +86,25 @@ cc.Class({
         return act
     },
 
+    ActiveLoadDBA:function(){
+        var DBA = this.NodeDBA.getComponent(dragonBones.ArmatureDisplay);
+        var info = Global.infoRP[Global.ShotType]
+        cc.loader.loadRes(info[0], dragonBones.DragonBonesAsset, (err, res) => {
+            cc.loader.loadRes(info[1], dragonBones.DragonBonesAtlasAsset, (err2, res2) => {
+                DBA.dragonAsset = res;
+                DBA.dragonAtlasAsset = res2;
+                DBA.armatureName = info[2]
+                DBA.playAnimation(DBA.armatureName,1);
+                DBA.addEventListener(dragonBones.EventObject.COMPLETE, this.chgtype, this);
+            })
+        })
+    },
+
+    chgtype:function(){
+        cc.log('come in')
+        Global.ShotFlag = true
+    },
+
     onLoad () {
         Global.card = [0,0,0];
         this.numArray = new Array();
@@ -73,7 +116,7 @@ cc.Class({
     start () {
         var Jerry = this
         // setTimeout(function(){
-        //     Jerry.getcolor();
+        //     Jerry.getThreeNum();
         // },3000)
 
         this.callback = function(){
@@ -90,7 +133,10 @@ cc.Class({
                 }
 
                 setTimeout(function(){
-                    var together = cc.sequence(cc.spawn(cc.moveTo(0.5,cc.v2(242,-199)),cc.scaleTo(0.5,0.35,0.35)),cc.callFunc(function(){Global.ShotFlag = true},this))
+                    var together = cc.sequence(cc.spawn(cc.moveTo(0.5,cc.v2(242,-199)),cc.scaleTo(0.5,0.35,0.35)),cc.callFunc(function(){
+                        Jerry.getShotType();
+                        Jerry.ActiveLoadDBA();
+                    },this))
                     Jerry.node.runAction(together)
                 },6000)
             this.unschedule(this.callback)

@@ -60,8 +60,8 @@ cc.Class({
             break;
             case 2:
                 cc.director.getCollisionManager().enabled = true
-                this.moveSec = 0.8
-                this.angle = 1260
+                this.moveSec = 0.9
+                this.angle = 960
                 this.easeinTime = 1.0
                 act = [cc.v2(0,-252),cc.v2(189,164),cc.v2(68,119)]
                 break;
@@ -77,32 +77,12 @@ cc.Class({
         
     },
 
-    getpathnum:function(){
-        var num1 = this.getnum(Global.card[0]%13);
-        var num2 = this.getnum(Global.card[1]%13);
-        var num3 = this.getnum(Global.card[2]%13);
-        if((num1 < num3 && num2 > num3) || (num1 > num3 && num2 < num3)){
-            Global.ShotType = 1
-        }else if(num1 == num3 || num3 == num2){
-            Global.ShotType = 2
-        }else if((num1 < num3 && num3 > num2) || (num1 > num3 && num2 > num3)){
-            Global.ShotType = 3
-        }
-        return Global.ShotType
-    },
-
-    getnum:function(n){
-        if(n == 0) n = 13
-        else n = n
-        return n
-    },
-
     secondact:function(){
         this.node.runAction()
     },
 
     ballshot:function(){
-        this.pathtype = this.getpathnum();
+        this.pathtype = Global.ShotType;
         var ballact = this.getpath(this.pathtype);
         var action = cc.rotateBy(this.moveSec,this.angle);
         if(this.type == 2) var ballactX = cc.bezierTo(this.moveSec,ballact)
