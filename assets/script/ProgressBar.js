@@ -49,6 +49,7 @@ cc.Class({
                 this.unschedule(this.callback)
             } 
         }
+        //asd
         this.schedule(this.callback, 2);
     },
 
