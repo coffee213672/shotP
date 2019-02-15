@@ -43,13 +43,12 @@ cc.Class({
                     this.old_value[i] = JerryProgressAry[i]
                 }
             }else{
-                this.node.children[0].runAction(cc.fadeOut(0.8))
-                this.node.children[1].runAction(cc.fadeOut(0.8))
-                this.node.children[2].runAction(cc.fadeOut(0.8))
+                for(let i in Global.card){
+                    this.node.children[i].runAction(cc.fadeOut(0.8))
+                }
                 this.unschedule(this.callback)
             } 
         }
-
         this.schedule(this.callback, 2);
     },
 
