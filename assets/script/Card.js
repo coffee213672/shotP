@@ -12,6 +12,22 @@ cc.Class({
         ball:cc.Node,
 
         NodeDBA:cc.Node,
+
+        cardN:{
+            type:cc.AudioClip,
+            default: null,
+        },
+
+        resultShot:{
+            type:cc.AudioClip,
+            default: null,
+        },
+
+        resultMiss:{
+            type:cc.AudioClip,
+            default: null,
+        },
+
     },
 
     getThreeNum:function(){
@@ -80,6 +96,8 @@ cc.Class({
                 DBA.dragonAtlasAsset = res2;
                 DBA.armatureName = info[2]
                 DBA.playAnimation(DBA.armatureName,1);
+                if(Global.ShotType == 1) cc.audioEngine.play(this.resultShot, false, 0.5)
+                else cc.audioEngine.play(this.resultMiss, false, 0.5)
                 DBA.addEventListener(dragonBones.EventObject.COMPLETE, this.chgtype, this);
             })
         })
@@ -87,6 +105,10 @@ cc.Class({
 
     chgtype:function(){
         Global.ShotFlag = true
+    },
+
+    PlayEffectSound:function(z){
+        cc.audioEngine.play(this.cardN, false, 0.5)
     },
 
     onLoad () {
@@ -108,10 +130,13 @@ cc.Class({
             if(CardNumAry.indexOf(0) == -1){
                 Global.StartFlag = true
                 Global.card = CardNumAry;
+                var pm = cc.audioEngine
                 for(let i in Global.card){
                     let Nnum = parseInt(i) + 1;
                     let act = this.JerryOpenCard(this['card'+Nnum],i)
+                    
                     setTimeout(function(){
+                        Jerry.PlayEffectSound(Nnum)
                         Jerry['card'+Nnum].runAction(act)
                     },(parseInt(i)+2)*1000)
                 }

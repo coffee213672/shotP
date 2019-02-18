@@ -41,9 +41,9 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.9643867924528299,
-      "y": 0.9643867924528299,
-      "z": 0.9643867924528299
+      "x": 0.5854767549871867,
+      "y": 0.5854767549871867,
+      "z": 0.5854767549871867
     },
     "_quat": {
       "__type__": "cc.Quat",
@@ -3841,6 +3841,15 @@
     "NodeDBA": {
       "__id__": 89
     },
+    "cardN": {
+      "__uuid__": "86273f8e-0b68-4770-8c33-0401bad85ac6"
+    },
+    "resultShot": {
+      "__uuid__": "eb61ed04-b7a3-4997-b637-e665b352ab31"
+    },
+    "resultMiss": {
+      "__uuid__": "1fac47bd-b6d6-45e4-adce-fcd139f79103"
+    },
     "_id": "f8d6TF/gFG/oVp8o/Yl9Pi"
   },
   {
@@ -3951,17 +3960,17 @@
     "mask": {
       "__id__": 7
     },
-    "Kick": {
-      "__uuid__": "2f257167-f54f-4f4d-9927-9b91e47fd0d4"
-    },
     "HitGround": {
       "__uuid__": "b1cbc951-ced0-4a90-a1de-cb9388f988f3"
     },
     "HitGoal": {
-      "__uuid__": "0fdfa5dd-9ca7-4af4-b1fd-48741c81c12e"
+      "__uuid__": "dad9c95a-051b-4231-9d44-6e0e322a6178"
     },
     "OutInWater": {
       "__uuid__": "d34aee1e-0506-4248-b131-7dfc52076e52"
+    },
+    "Kick": {
+      "__uuid__": "2f257167-f54f-4f4d-9927-9b91e47fd0d4"
     },
     "_id": "34OBgJOK1N96biRWvdG+FX"
   },
@@ -4175,10 +4184,10 @@
     "mask": {
       "__id__": 7
     },
-    "Kick": null,
     "HitGround": null,
     "HitGoal": null,
     "OutInWater": null,
+    "Kick": null,
     "_id": "a5mSecy1xH0oJwDO4p/tgV"
   },
   {
@@ -4310,10 +4319,10 @@
     "mask": {
       "__id__": 7
     },
-    "Kick": null,
     "HitGround": null,
     "HitGoal": null,
     "OutInWater": null,
+    "Kick": null,
     "_id": "e5UBHBGSpNqqKyHgOGKG9t"
   },
   {
@@ -4445,10 +4454,10 @@
     "mask": {
       "__id__": 7
     },
-    "Kick": null,
     "HitGround": null,
     "HitGoal": null,
     "OutInWater": null,
+    "Kick": null,
     "_id": "c9oeLV+N9I0KFSNJuXgy2I"
   },
   {
@@ -4580,10 +4589,10 @@
     "mask": {
       "__id__": 7
     },
-    "Kick": null,
     "HitGround": null,
     "HitGoal": null,
     "OutInWater": null,
+    "Kick": null,
     "_id": "86rAx0bARINYOmwGwwchOT"
   },
   {
@@ -4715,10 +4724,10 @@
     "mask": {
       "__id__": 7
     },
-    "Kick": null,
     "HitGround": null,
     "HitGoal": null,
     "OutInWater": null,
+    "Kick": null,
     "_id": "0eO/fzH/lP/Z8vzonjiZdU"
   },
   {
@@ -4850,10 +4859,10 @@
     "mask": {
       "__id__": 7
     },
-    "Kick": null,
     "HitGround": null,
     "HitGoal": null,
     "OutInWater": null,
+    "Kick": null,
     "_id": "f2wL6KF5lNjotoAZm2HtVG"
   },
   {
@@ -4985,10 +4994,10 @@
     "mask": {
       "__id__": 7
     },
-    "Kick": null,
     "HitGround": null,
     "HitGoal": null,
     "OutInWater": null,
+    "Kick": null,
     "_id": "9ceE1AEnJJkICyOfIrk6ui"
   },
   {
@@ -5120,10 +5129,10 @@
     "mask": {
       "__id__": 7
     },
-    "Kick": null,
     "HitGround": null,
     "HitGoal": null,
     "OutInWater": null,
+    "Kick": null,
     "_id": "bcFG1PQrlMfo41BD7GCaEF"
   },
   {

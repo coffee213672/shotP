@@ -3,7 +3,6 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        
     },
 
     progressbarMove:function(Ptype,newBarV,progressbar,bar_string){

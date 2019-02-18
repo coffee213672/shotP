@@ -5,10 +5,6 @@ cc.Class({
     properties: {
         Pillar:cc.Node,
         mask:cc.Node,
-        Kick:{
-            type:cc.AudioClip,
-            default: null,
-        },
         HitGround:{
             type:cc.AudioClip,
             default: null,
@@ -18,6 +14,11 @@ cc.Class({
             default: null,
         },
         OutInWater:{
+            type:cc.AudioClip,
+            default: null,
+        },
+        
+        Kick:{
             type:cc.AudioClip,
             default: null,
         },
@@ -70,7 +71,7 @@ cc.Class({
                 break;
             case 3:
                 cc.director.getCollisionManager().enabled = false
-                data.moveSec = 2
+                data.moveSec = 2.4
                 data.angle = 2880
                 data.easeinTime = 1.0
                 data.act = [cc.v2(0,-252),cc.v2(232,-68),cc.v2(325,225),cc.v2(192,199),cc.v2(103,127),cc.v2(32,55),cc.v2(-17,-6),cc.v2(-62,-45),cc.v2(-97,-83)]
@@ -86,9 +87,8 @@ cc.Class({
         if(this.type == 2) var ballactX = cc.bezierTo(ballact.moveSec,ballact.act)
         else var ballactX = cc.cardinalSplineTo(ballact.moveSec,ballact.act,0) //catmullRomTo
         this.shoot();
-        cc.audioEngine.play(this.Kick, false, 0.5)
-        if(this.pathtype == 1) this.node.runAction(cc.sequence(cc.spawn(action,ballactX).easing(cc.easeOut(1.0)),cc.callFunc(function(){cc.audioEngine.play(this.HitGround, false, 0.5)},this),cc.spawn(cc.rotateBy(0.5,270),cc.cardinalSplineTo(0.5,[cc.v2(-50,-44),cc.v2(-70,-18),cc.v2(-111,-67)],0)).easing(cc.easeInOut(1.0))))
-        else this.node.runAction(cc.sequence(cc.spawn(action,ballactX).easing(cc.easeOut(ballact.easeinTime)),cc.callFunc(function(){
+        if(this.pathtype == 1) this.node.runAction(cc.sequence(cc.audioEngine.play(this.Kick,false,0.5),cc.spawn(action,ballactX).easing(cc.easeOut(1.0)),cc.callFunc(function(){cc.audioEngine.play(this.HitGround, false, 0.5)},this),cc.spawn(cc.rotateBy(0.5,270),cc.cardinalSplineTo(0.5,[cc.v2(-50,-44),cc.v2(-70,-18),cc.v2(-111,-67)],0)).easing(cc.easeInOut(1.0))))
+        else this.node.runAction(cc.sequence(cc.audioEngine.play(this.Kick,false,0.5),cc.spawn(action,ballactX).easing(cc.easeOut(ballact.easeinTime)),cc.callFunc(function(){
             if(this.pathtype == 3) cc.audioEngine.play(this.OutInWater, false, 0.5)
         },this)))
     },
@@ -121,19 +121,19 @@ cc.Class({
     onCollisionExit: function (other, self) {
         var Jerry = this
         if(other.node._name == 'hitCollider') setTimeout(function(){Jerry.Pillar.children[0].active = false},50)
-        else if(other.node.name == 'groundCollider') setTimeout(function(){Jerry.Pillar.children[1].active = false},50)
-        else cc.log('I"m mask')
+        else setTimeout(function(){Jerry.Pillar.children[1].active = false},50)
     },
 
     start () {
         this.callback = function() {
             if(Global.ShotFlag == true){
                 this.ballshot();
+                // cc.audioEngine.play(this.Kick, false, 0.5)
                 this.unschedule(this.callback);
             }
         }
 
-        this.schedule(this.callback, 1);
+        this.schedule(this.callback, 0.2);
     },
 
     // update (dt) {},
