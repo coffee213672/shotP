@@ -32,6 +32,7 @@ cc.Class({
     onLoad () {
         cc.sys.localStorage.setItem('progressbar',JSON.stringify([0,0,0]))
         this.old_value = [0,0,0]
+        Global.StartFlag = false
     },
 
     start () {
@@ -49,7 +50,6 @@ cc.Class({
                 this.unschedule(this.callback)
             } 
         }
-        //asd
         this.schedule(this.callback, 2);
     },
 

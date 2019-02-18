@@ -41,9 +41,9 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
+      "x": 0.9643867924528299,
+      "y": 0.9643867924528299,
+      "z": 0.9643867924528299
     },
     "_quat": {
       "__type__": "cc.Quat",
@@ -3951,6 +3951,18 @@
     "mask": {
       "__id__": 7
     },
+    "Kick": {
+      "__uuid__": "2f257167-f54f-4f4d-9927-9b91e47fd0d4"
+    },
+    "HitGround": {
+      "__uuid__": "b1cbc951-ced0-4a90-a1de-cb9388f988f3"
+    },
+    "HitGoal": {
+      "__uuid__": "0fdfa5dd-9ca7-4af4-b1fd-48741c81c12e"
+    },
+    "OutInWater": {
+      "__uuid__": "d34aee1e-0506-4248-b131-7dfc52076e52"
+    },
     "_id": "34OBgJOK1N96biRWvdG+FX"
   },
   {
@@ -4163,6 +4175,10 @@
     "mask": {
       "__id__": 7
     },
+    "Kick": null,
+    "HitGround": null,
+    "HitGoal": null,
+    "OutInWater": null,
     "_id": "a5mSecy1xH0oJwDO4p/tgV"
   },
   {
@@ -4294,6 +4310,10 @@
     "mask": {
       "__id__": 7
     },
+    "Kick": null,
+    "HitGround": null,
+    "HitGoal": null,
+    "OutInWater": null,
     "_id": "e5UBHBGSpNqqKyHgOGKG9t"
   },
   {
@@ -4425,6 +4445,10 @@
     "mask": {
       "__id__": 7
     },
+    "Kick": null,
+    "HitGround": null,
+    "HitGoal": null,
+    "OutInWater": null,
     "_id": "c9oeLV+N9I0KFSNJuXgy2I"
   },
   {
@@ -4556,6 +4580,10 @@
     "mask": {
       "__id__": 7
     },
+    "Kick": null,
+    "HitGround": null,
+    "HitGoal": null,
+    "OutInWater": null,
     "_id": "86rAx0bARINYOmwGwwchOT"
   },
   {
@@ -4687,6 +4715,10 @@
     "mask": {
       "__id__": 7
     },
+    "Kick": null,
+    "HitGround": null,
+    "HitGoal": null,
+    "OutInWater": null,
     "_id": "0eO/fzH/lP/Z8vzonjiZdU"
   },
   {
@@ -4818,6 +4850,10 @@
     "mask": {
       "__id__": 7
     },
+    "Kick": null,
+    "HitGround": null,
+    "HitGoal": null,
+    "OutInWater": null,
     "_id": "f2wL6KF5lNjotoAZm2HtVG"
   },
   {
@@ -4949,6 +4985,10 @@
     "mask": {
       "__id__": 7
     },
+    "Kick": null,
+    "HitGround": null,
+    "HitGoal": null,
+    "OutInWater": null,
     "_id": "9ceE1AEnJJkICyOfIrk6ui"
   },
   {
@@ -5080,6 +5120,10 @@
     "mask": {
       "__id__": 7
     },
+    "Kick": null,
+    "HitGround": null,
+    "HitGoal": null,
+    "OutInWater": null,
     "_id": "bcFG1PQrlMfo41BD7GCaEF"
   },
   {

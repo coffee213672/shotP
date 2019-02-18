@@ -4,8 +4,23 @@ cc.Class({
 
     properties: {
         Pillar:cc.Node,
-
         mask:cc.Node,
+        Kick:{
+            type:cc.AudioClip,
+            default: null,
+        },
+        HitGround:{
+            type:cc.AudioClip,
+            default: null,
+        },
+        HitGoal:{
+            type:cc.AudioClip,
+            default: null,
+        },
+        OutInWater:{
+            type:cc.AudioClip,
+            default: null,
+        },
     },
 
     shoot:function(){
@@ -71,8 +86,11 @@ cc.Class({
         if(this.type == 2) var ballactX = cc.bezierTo(ballact.moveSec,ballact.act)
         else var ballactX = cc.cardinalSplineTo(ballact.moveSec,ballact.act,0) //catmullRomTo
         this.shoot();
-        if(this.pathtype == 1) this.node.runAction(cc.sequence(cc.spawn(action,ballactX).easing(cc.easeOut(1.0)),cc.spawn(cc.rotateBy(0.5,270),cc.cardinalSplineTo(0.5,[cc.v2(-50,-44),cc.v2(-70,-18),cc.v2(-111,-67)],0)).easing(cc.easeInOut(1.0))))
-        else this.node.runAction(cc.spawn(action,ballactX).easing(cc.easeOut(ballact.easeinTime)))
+        cc.audioEngine.play(this.Kick, false, 0.5)
+        if(this.pathtype == 1) this.node.runAction(cc.sequence(cc.spawn(action,ballactX).easing(cc.easeOut(1.0)),cc.callFunc(function(){cc.audioEngine.play(this.HitGround, false, 0.5)},this),cc.spawn(cc.rotateBy(0.5,270),cc.cardinalSplineTo(0.5,[cc.v2(-50,-44),cc.v2(-70,-18),cc.v2(-111,-67)],0)).easing(cc.easeInOut(1.0))))
+        else this.node.runAction(cc.sequence(cc.spawn(action,ballactX).easing(cc.easeOut(ballact.easeinTime)),cc.callFunc(function(){
+            if(this.pathtype == 3) cc.audioEngine.play(this.OutInWater, false, 0.5)
+        },this)))
     },
 
     onLoad () {
@@ -88,6 +106,7 @@ cc.Class({
         var Jerry = this
         if(other.node._name == 'hitCollider'){
             this.Pillar.children[0].active = true
+            cc.audioEngine.play(this.HitGoal, false, 0.5)
             var action = cc.rotateBy(0.5,540);
             var act2 = [cc.v2(41.5,141),cc.v2(21.6,162),cc.v2(0.1,182),cc.v2(-21.1,202),cc.v2(-42.1,225),cc.v2(-65,246),cc.v2(-90,271),cc.v2(-105,289)];
             var ballactX = cc.cardinalSplineTo(0.3,act2,0)
@@ -102,7 +121,8 @@ cc.Class({
     onCollisionExit: function (other, self) {
         var Jerry = this
         if(other.node._name == 'hitCollider') setTimeout(function(){Jerry.Pillar.children[0].active = false},50)
-        else setTimeout(function(){Jerry.Pillar.children[1].active = false},50)
+        else if(other.node.name == 'groundCollider') setTimeout(function(){Jerry.Pillar.children[1].active = false},50)
+        else cc.log('I"m mask')
     },
 
     start () {
