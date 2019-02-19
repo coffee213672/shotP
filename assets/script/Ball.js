@@ -24,28 +24,28 @@ cc.Class({
     },
 
     shoot:function(){
-        var xdx = this
+        var Jerry = this
         for(let i=1;i<8;i++){
             let x = 1- i/10
             setTimeout(function(){
-                if(xdx.pathtype == 1) xdx.node.runAction(cc.sequence(cc.scaleTo(0.1,x,x),cc.callFunc(function(){Global.test = true},xdx)))
+                if(Jerry.pathtype == 1) Jerry.node.runAction(cc.sequence(cc.scaleTo(0.1,x,x),cc.callFunc(function(){Global.test = true},Jerry)))
                 else {
-                    xdx.node.runAction(cc.scaleTo(0.1,x,x))
-                    if(i == 7) xdx.shootX();
+                    Jerry.node.runAction(cc.scaleTo(0.1,x,x))
+                    if(i == 7) Jerry.shootX();
                 }
             },i*50)
         }
     },
 
     shootX:function(){
-        let xdx = this
+        let Jerry = this
         if(this.pathtype == 3) {
             this.mask.setSiblingIndex(9)
             this.Pillar.setSiblingIndex(10)
             for(let i=1;i<6;i++){
                 let x = 0.3 - i * 0.02
                 setTimeout(function(){
-                    xdx.node.runAction(cc.sequence(cc.scaleTo(0.05,x,x),cc.callFunc(function(){Global.test = true},xdx)))
+                    Jerry.node.runAction(cc.sequence(cc.scaleTo(0.05,x,x),cc.callFunc(function(){Global.test = true},Jerry)))
                 },i*50)
             }
         }else Global.test = true
