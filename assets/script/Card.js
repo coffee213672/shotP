@@ -141,7 +141,7 @@ cc.Class({
                     },(parseInt(i)+2)*1000)
                 }
                 setTimeout(function(){
-                    var together = cc.sequence(cc.spawn(cc.moveTo(0.5,cc.v2(242,-199)),cc.scaleTo(0.5,0.35,0.35)),cc.callFunc(function(){
+                    var together = cc.sequence(cc.spawn(cc.moveTo(0.5,cc.v2(242,-195)),cc.scaleTo(0.5,0.35,0.35)),cc.callFunc(function(){
                         Jerry.getShotType();
                         Jerry.ActiveLoadDBA();
                     },this))

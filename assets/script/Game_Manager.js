@@ -54,7 +54,7 @@ cc.Class({
             this.timerX += dt
         }
 
-        if(this.timerX > 3){
+        if(this.timerX > 5){
             this.gameOver();
             this.timerX = 0;
         }
