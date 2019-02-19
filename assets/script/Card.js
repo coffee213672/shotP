@@ -13,6 +13,8 @@ cc.Class({
 
         NodeDBA:cc.Node,
 
+        resultP:cc.Node,
+
         cardN:{
             type:cc.AudioClip,
             default: null,
@@ -59,6 +61,7 @@ cc.Class({
         var num1 = this.getnumN(Global.card[0]%13);
         var num2 = this.getnumN(Global.card[1]%13);
         var num3 = this.getnumN(Global.card[2]%13);
+        var result = this.resultP
         if((num1 < num3 && num2 > num3) || (num1 > num3 && num2 < num3)){
             Global.ShotType = 1
         }else if(num1 == num3 || num3 == num2){
@@ -66,6 +69,10 @@ cc.Class({
         }else if((num1 < num3 && num3 > num2) || (num1 > num3 && num2 > num3)){
             Global.ShotType = 3
         }
+
+        cc.loader.loadRes("result/"+Global.resultRP[Global.ShotType -1], cc.SpriteFrame, function (err, spriteFrame) {
+            result.getComponent(cc.Sprite).spriteFrame = spriteFrame;
+        });
     },
 
     JerryOpenCard:function(card,Wcard){
@@ -115,6 +122,7 @@ cc.Class({
         Global.card = [0,0,0];
         this.numArray = new Array();
         this.SendToBallFlag = false;
+        this.resultP.active = false;
         Global.ShotFlag = false
         cc.sys.localStorage.setItem('CardNum',JSON.stringify([0,0,0]));
     },

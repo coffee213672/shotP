@@ -11,4 +11,5 @@ module.exports = {
             ['ShotAnim/hit/happyfeet2_ske','ShotAnim/hit/happyfeet2_tex','Sprite'],
             ['ShotAnim/out/happyfeet3_ske','ShotAnim/out/happyfeet3_tex','Sprite']
         ],
+    resultRP:['goal','hit','miss'],
 }

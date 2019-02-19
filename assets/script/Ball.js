@@ -17,7 +17,6 @@ cc.Class({
             type:cc.AudioClip,
             default: null,
         },
-        
         Kick:{
             type:cc.AudioClip,
             default: null,

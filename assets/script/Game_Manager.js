@@ -5,6 +5,8 @@ cc.Class({
     properties: {
         period:cc.Label,
 
+        EndBlack:cc.Node,
+
         button1:cc.Button,
 
         button2:cc.Button,
@@ -14,7 +16,6 @@ cc.Class({
 
     gameOver:function(){
         Global.test = false
-        Global.sn += 1
         cc.director.loadScene('game_shoot');
     },
 
@@ -58,5 +59,11 @@ cc.Class({
             this.gameOver();
             this.timerX = 0;
         }
+
+        if((this.timerX > 3) && (!this.EndBlack.active)){ //若有比EndBlack層級高一層-2
+            this.period.node.color = new cc.Color(255,255,255)
+            this.EndBlack.active = true
+            this.node.children[this.node.childrenCount - 1].active = true
+        } 
     },
 });
