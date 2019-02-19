@@ -87,14 +87,14 @@ cc.Class({
         if(this.type == 2) var ballactX = cc.bezierTo(ballact.moveSec,ballact.act)
         else var ballactX = cc.cardinalSplineTo(ballact.moveSec,ballact.act,0) //catmullRomTo
         this.shoot();
-        if(this.pathtype == 1) this.node.runAction(cc.sequence(cc.audioEngine.play(this.Kick,false,0.5),cc.spawn(action,ballactX).easing(cc.easeOut(1.0)),cc.callFunc(function(){cc.audioEngine.play(this.HitGround, false, 0.5)},this),cc.spawn(cc.rotateBy(0.5,270),cc.cardinalSplineTo(0.5,[cc.v2(-50,-44),cc.v2(-70,-18),cc.v2(-111,-67)],0)).easing(cc.easeInOut(1.0))))
-        else this.node.runAction(cc.sequence(cc.audioEngine.play(this.Kick,false,0.5),cc.spawn(action,ballactX).easing(cc.easeOut(ballact.easeinTime)),cc.callFunc(function(){
+        if(this.pathtype == 1) this.node.runAction(cc.sequence(cc.spawn(action,ballactX).easing(cc.easeOut(1.0)),cc.callFunc(function(){cc.audioEngine.play(this.HitGround, false, 0.5)},this),cc.spawn(cc.rotateBy(0.5,270),cc.cardinalSplineTo(0.5,[cc.v2(-50,-44),cc.v2(-70,-18),cc.v2(-111,-67)],0)).easing(cc.easeInOut(1.0))))
+        else this.node.runAction(cc.sequence(cc.spawn(action,ballactX).easing(cc.easeOut(ballact.easeinTime)),cc.callFunc(function(){
             if(this.pathtype == 3) cc.audioEngine.play(this.OutInWater, false, 0.5)
         },this)))
     },
 
     onLoad () {
-        cc.director.getCollisionManager().enabledDebugDraw = false    
+        cc.director.getCollisionManager().enabledDebugDraw = false
 
         Global.ShotType = 0;
         this.pathtype = 0;
@@ -125,16 +125,15 @@ cc.Class({
     },
 
     start () {
+        var Jerry = this
         this.callback = function() {
             if(Global.ShotFlag == true){
-                this.ballshot();
-                // cc.audioEngine.play(this.Kick, false, 0.5)
+                cc.audioEngine.play(this.Kick,false,0.5)
+                setTimeout(function(){Jerry.ballshot();},400)
                 this.unschedule(this.callback);
             }
         }
-
         this.schedule(this.callback, 0.2);
     },
-
     // update (dt) {},
 });
