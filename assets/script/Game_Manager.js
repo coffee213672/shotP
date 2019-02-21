@@ -27,15 +27,16 @@ cc.Class({
         this.button3.node.on('click',this.callback,this)
     },
 
+    //三種結果按鈕
     callback:function(Button){
         switch (Button.node._name){
-            case 'button1':
+            case 'button1': // 射門
                 cc.sys.localStorage.setItem('CardNum',JSON.stringify([1,29,15]))
             break
-            case 'button2':
+            case 'button2': // 撞柱
                 cc.sys.localStorage.setItem('CardNum',JSON.stringify([1,29,16]))
             break
-            default:
+            default: // 界外
                 cc.sys.localStorage.setItem('CardNum',JSON.stringify([1,29,17]))
         }
     },

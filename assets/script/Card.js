@@ -97,8 +97,8 @@ cc.Class({
     ActiveLoadDBA:function(){
         var DBA = this.NodeDBA.getComponent(dragonBones.ArmatureDisplay);
         var info = Global.infoRP[Global.ShotType-1]
-        cc.loader.loadRes(info[0], dragonBones.DragonBonesAsset, (err, res) => {
-            cc.loader.loadRes(info[1], dragonBones.DragonBonesAtlasAsset, (err2, res2) => {
+        cc.loader.loadRes("ShotAnim/"+info[0], dragonBones.DragonBonesAsset, (err, res) => {
+            cc.loader.loadRes("ShotAnim/"+info[1], dragonBones.DragonBonesAtlasAsset, (err2, res2) => {
                 DBA.dragonAsset = res;
                 DBA.dragonAtlasAsset = res2;
                 DBA.armatureName = info[2]

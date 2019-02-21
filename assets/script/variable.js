@@ -6,10 +6,11 @@ module.exports = {
     sn:0,
     ShotType:0,
     AnimOver:false,
+    Penguin:[['PinkPenguin/game_p_ske','PinkPenguin/game_p_tex','game_p']],
     infoRP:[
-            ['ShotAnim/in/happyfeet_ske','ShotAnim/in/happyfeet_tex','Goal'],
-            ['ShotAnim/hit/happyfeet2_ske','ShotAnim/hit/happyfeet2_tex','Sprite'],
-            ['ShotAnim/out/happyfeet3_ske','ShotAnim/out/happyfeet3_tex','Sprite']
+            ['in/happyfeet_ske','in/happyfeet_tex','Goal'],
+            ['hit/happyfeet2_ske','hit/happyfeet2_tex','Sprite'],
+            ['out/happyfeet3_ske','out/happyfeet3_tex','Sprite']
         ],
     resultRP:['goal','hit','miss'],
 }
