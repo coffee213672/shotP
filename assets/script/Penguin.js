@@ -25,7 +25,8 @@ cc.Class({
     start () {
         this.schedule(function(){
             var RandPenguinNum = 0//Math.floor(Math.random()*3);
-            this.LoadPenguin(RandPenguinNum);
+            cc.log(Global.ShotFlag)
+            if(!Global.StartFlag) this.LoadPenguin(RandPenguinNum);
         },10)
     },
 

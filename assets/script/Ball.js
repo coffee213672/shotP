@@ -130,7 +130,7 @@ cc.Class({
     start () {
         var Jerry = this
         this.callback = function() {
-            if(Global.ShotFlag == true){
+            if(Global.ShotFlag){
                 cc.audioEngine.play(this.Kick,false,0.5)
                 setTimeout(function(){Jerry.ballshot();},400)
                 this.unschedule(this.callback);
