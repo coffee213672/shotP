@@ -138,7 +138,6 @@ cc.Class({
             if(CardNumAry.indexOf(0) == -1){
                 Global.StartFlag = true
                 Global.card = CardNumAry;
-                var pm = cc.audioEngine
                 for(let i in Global.card){
                     let Nnum = parseInt(i) + 1;
                     let act = this.JerryOpenCard(this['card'+Nnum],i)

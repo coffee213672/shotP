@@ -6,6 +6,7 @@ cc.Class({
     },
 
     LoadPenguin:function(RPN){
+        this.node.addComponent(dragonBones.ArmatureDisplay);
         var RP = this.node.getComponent(dragonBones.ArmatureDisplay);
         var PenguinArray = Global.Penguin[RPN];
         cc.loader.loadRes("RandPenguin/"+PenguinArray[0], dragonBones.DragonBonesAsset, (err, res) => {
@@ -13,19 +14,22 @@ cc.Class({
                 RP.dragonAsset = res;
                 RP.dragonAtlasAsset = res2;
                 RP.armatureName = PenguinArray[2]
-                RP.playAnimation(RP.armatureName,1);
+                cc.log(RP.dragonAsset._dragonBonesData.stage.animationNames[0])
+                RP.playAnimation(RP.dragonAsset._dragonBonesData.stage.animationNames[0],1);
+                RP.addEventListener(dragonBones.EventObject.COMPLETE, this.removeDB, this);
             })
         })
     },
 
-    onLoad () {
-
+    removeDB:function(){
+        this.node.removeComponent(dragonBones.ArmatureDisplay)
     },
+
+    // onLoad () {},
 
     start () {
         this.schedule(function(){
-            var RandPenguinNum = 0//Math.floor(Math.random()*3);
-            cc.log(Global.ShotFlag)
+            var RandPenguinNum = Math.floor(Math.random()*2);
             if(!Global.StartFlag) this.LoadPenguin(RandPenguinNum);
         },10)
     },

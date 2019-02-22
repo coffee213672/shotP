@@ -41,9 +41,9 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.6927965390472687,
-      "y": 0.6927965390472687,
-      "z": 0.6927965390472687
+      "x": 0.9657429245283019,
+      "y": 0.9657429245283019,
+      "z": 0.9657429245283019
     },
     "_quat": {
       "__type__": "cc.Quat",
@@ -112,7 +112,7 @@
         "__id__": 109
       },
       {
-        "__id__": 112
+        "__id__": 111
       },
       {
         "__id__": 107
@@ -122,10 +122,10 @@
     "_level": 1,
     "_components": [
       {
-        "__id__": 114
+        "__id__": 113
       },
       {
-        "__id__": 115
+        "__id__": 114
       }
     ],
     "_prefab": null,
@@ -4966,9 +4966,6 @@
     "_components": [
       {
         "__id__": 110
-      },
-      {
-        "__id__": 111
       }
     ],
     "_prefab": null,
@@ -5017,27 +5014,6 @@
     "_id": "74iHgWvXROmrJKa9KejddN"
   },
   {
-    "__type__": "dragonBones.ArmatureDisplay",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 109
-    },
-    "_enabled": true,
-    "_srcBlendFactor": 770,
-    "_dstBlendFactor": 771,
-    "_armatureName": "",
-    "_animationName": "",
-    "playTimes": 0,
-    "_N$dragonAsset": null,
-    "_N$dragonAtlasAsset": null,
-    "_N$_defaultArmatureIndex": 0,
-    "_N$_animationIndex": 0,
-    "_N$timeScale": 1,
-    "_N$debugBones": false,
-    "_id": "e6faKhHlxO3bjP8McV6lo1"
-  },
-  {
     "__type__": "cd68c8DvXBAJKf0LuOSICvd",
     "_name": "",
     "_objFlags": 0,
@@ -5045,7 +5021,7 @@
       "__id__": 109
     },
     "_enabled": true,
-    "_id": "bbT6yUQbRJPK4dPjB6ZJwO"
+    "_id": "5fcyrqO9VPMbkwFzO+5qbk"
   },
   {
     "__type__": "cc.Node",
@@ -5059,7 +5035,7 @@
     "_level": 2,
     "_components": [
       {
-        "__id__": 113
+        "__id__": 112
       }
     ],
     "_prefab": null,
@@ -5114,7 +5090,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 112
+      "__id__": 111
     },
     "_enabled": true,
     "_srcBlendFactor": 1,
@@ -5162,7 +5138,7 @@
     },
     "_enabled": true,
     "period": {
-      "__id__": 113
+      "__id__": 112
     },
     "EndBlack": {
       "__id__": 76
