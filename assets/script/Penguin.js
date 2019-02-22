@@ -25,11 +25,23 @@ cc.Class({
         this.node.removeComponent(dragonBones.ArmatureDisplay)
     },
 
+    nodeLocationXY:function(num){
+        switch (num){
+            case 0:
+                this.node.x = -13;
+            break
+            case 1:
+                this.node.x = 0;
+            break
+        }
+    },
+
     // onLoad () {},
 
     start () {
         this.schedule(function(){
             var RandPenguinNum = Math.floor(Math.random()*2);
+            this.nodeLocationXY(RandPenguinNum)
             if(!Global.StartFlag) this.LoadPenguin(RandPenguinNum);
         },10)
     },
