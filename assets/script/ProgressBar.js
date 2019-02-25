@@ -10,7 +10,6 @@ cc.Class({
         if(newBarV > this.old_value[Ptype]){
             function addP(){
                 countT++
-                if(Global.test) return  //#1 避免重新loading出現錯誤
                 if(countT > newBarV) return false
                 progressbar.progress = (countT / 100)
                 bar_string.string = countT+'%';
@@ -21,11 +20,10 @@ cc.Class({
         else{
             function cutP(){
                 countT--
-                if(Global.test) return  //#1 避免重新loading出現錯誤
                 if(countT < newBarV) return false
                 progressbar.progress = (countT / 100)
                 bar_string.string = countT+'%';
-                setTimeout(cutP,40)
+                setTimeout(cutP,30)
             }
             cutP();
         }

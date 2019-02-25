@@ -14,7 +14,6 @@ cc.Class({
                 RP.dragonAsset = res;
                 RP.dragonAtlasAsset = res2;
                 RP.armatureName = PenguinArray[2]
-                cc.log(RP.dragonAsset._dragonBonesData.stage.animationNames[0])
                 RP.playAnimation(RP.dragonAsset._dragonBonesData.stage.animationNames[0],1);
                 RP.addEventListener(dragonBones.EventObject.COMPLETE, this.removeDB, this);
             })
@@ -42,7 +41,7 @@ cc.Class({
         this.schedule(function(){
             var RandPenguinNum = Math.floor(Math.random()*Global.Penguin.length);
             this.nodeLocationXY(RandPenguinNum)
-            if(!Global.CountDownFlag) this.LoadPenguin(RandPenguinNum);
+            if(!Global.StartCount) this.LoadPenguin(RandPenguinNum);
         },20)
     },
 

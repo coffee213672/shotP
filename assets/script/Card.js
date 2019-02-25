@@ -43,7 +43,7 @@ cc.Class({
             setTimeout(function(){
                 Jerry.PlayEffectSound(Nnum)
                 Jerry['card'+Nnum].runAction(act)
-            },(parseInt(i)+2)*1000)
+            },parseInt(i)*800)
         }
         setTimeout(function(){
             var together = cc.sequence(cc.spawn(cc.moveTo(0.5,cc.v2(242,-195)),cc.scaleTo(0.5,0.35,0.35)),cc.callFunc(function(){
@@ -51,7 +51,7 @@ cc.Class({
                 Jerry.ActiveLoadDBA();
             },this))
             Jerry.node.runAction(together)
-        },6000)
+        },3200)
     },
 
     getThreeNum:function(){
@@ -151,9 +151,9 @@ cc.Class({
 
     start () {
         var Jerry = this
-        // setTimeout(function(){
-        //     Jerry.getThreeNum();
-        // },3000)
+        setTimeout(function(){
+            Jerry.getThreeNum();
+        },45000)
 
         this.callback = function(){
             var CardNumAry = JSON.parse(cc.sys.localStorage.getItem('CardNum'))

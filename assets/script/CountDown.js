@@ -20,7 +20,7 @@ cc.Class({
                 var Jerry = this
                 Global.StartCount = true
                 var lastchild = this.node.children[0].children[0];
-                var counter = 6;
+                var counter = 4;
                 function showCountDown(){
                     counter--
                     if(counter == 0){

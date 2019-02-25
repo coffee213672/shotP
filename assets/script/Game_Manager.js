@@ -18,12 +18,15 @@ cc.Class({
 
     gameOver:function(){
         Global.test = false
+        cc.log(this.CT)
         cc.director.loadScene('game_shoot');
     },
 
     onLoad () {
         this.timerX = 0
         cc.sys.localStorage.setItem('CardNum',JSON.stringify([0,0,0]))
+
+        this.CT = 0
 
         this.button1.node.on('click',this.callback,this)
         this.button2.node.on('click',this.callback,this)
@@ -52,9 +55,16 @@ cc.Class({
             JerryProgressAry[2] = 100 - JerryProgressAry[0] - JerryProgressAry[1];
             cc.sys.localStorage.setItem('progressbar',JSON.stringify(JerryProgressAry))
         },5)
+
+        // this.schedule(function(){
+        //     if(Global.sn != cc.sys.localStorage.getItem('sn')) {
+                
+        //     }
+        // },0.5)
     },
 
     update (dt) {
+        this.CT += dt
         if(Global.test){
             this.timerX += dt
         }
