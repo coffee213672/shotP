@@ -32,6 +32,28 @@ cc.Class({
 
     },
 
+    ReadyToStart:function(){
+        var Jerry = this
+        var CardNumAry = JSON.parse(cc.sys.localStorage.getItem('CardNum'))
+        Global.StartFlag = true
+        Global.card = CardNumAry;
+        for(let i in Global.card){
+            let Nnum = parseInt(i) + 1;
+            let act = this.JerryOpenCard(this['card'+Nnum],i)        
+            setTimeout(function(){
+                Jerry.PlayEffectSound(Nnum)
+                Jerry['card'+Nnum].runAction(act)
+            },(parseInt(i)+2)*1000)
+        }
+        setTimeout(function(){
+            var together = cc.sequence(cc.spawn(cc.moveTo(0.5,cc.v2(242,-195)),cc.scaleTo(0.5,0.35,0.35)),cc.callFunc(function(){
+                Jerry.getShotType();
+                Jerry.ActiveLoadDBA();
+            },this))
+            Jerry.node.runAction(together)
+        },6000)
+    },
+
     getThreeNum:function(){
         var randnum = 0;
         do{
@@ -124,7 +146,7 @@ cc.Class({
         this.SendToBallFlag = false;
         this.resultP.active = false;
         Global.ShotFlag = false
-        cc.sys.localStorage.setItem('CardNum',JSON.stringify([0,0,0]));
+        Global.CountDownFlag = false
     },
 
     start () {
@@ -135,26 +157,9 @@ cc.Class({
 
         this.callback = function(){
             var CardNumAry = JSON.parse(cc.sys.localStorage.getItem('CardNum'))
-            if(CardNumAry.indexOf(0) == -1){
-                Global.StartFlag = true
-                Global.card = CardNumAry;
-                for(let i in Global.card){
-                    let Nnum = parseInt(i) + 1;
-                    let act = this.JerryOpenCard(this['card'+Nnum],i)
-                    
-                    setTimeout(function(){
-                        Jerry.PlayEffectSound(Nnum)
-                        Jerry['card'+Nnum].runAction(act)
-                    },(parseInt(i)+2)*1000)
-                }
-                setTimeout(function(){
-                    var together = cc.sequence(cc.spawn(cc.moveTo(0.5,cc.v2(242,-195)),cc.scaleTo(0.5,0.35,0.35)),cc.callFunc(function(){
-                        Jerry.getShotType();
-                        Jerry.ActiveLoadDBA();
-                    },this))
-                    Jerry.node.runAction(together)
-                },6000)
-            this.unschedule(this.callback)
+            if((CardNumAry.indexOf(0) == -1) && (Global.CountDownFlag)){
+                this.ReadyToStart();
+                this.unschedule(this.callback)
             }
         }
         this.schedule(this.callback, 1);

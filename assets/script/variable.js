@@ -1,7 +1,9 @@
 module.exports = {
     card: [0,0,0],
-    StartFlag: false,
-    ShotFlag: false,
+    CountDownFlag: false, //倒數
+    StartFlag: false,   //開牌
+    ShotFlag: false,    //射門
+    StartCount: false,  //開始倒數
     test:false,
     sn:0,
     ShotType:0,

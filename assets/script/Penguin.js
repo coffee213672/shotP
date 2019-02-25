@@ -42,7 +42,7 @@ cc.Class({
         this.schedule(function(){
             var RandPenguinNum = Math.floor(Math.random()*Global.Penguin.length);
             this.nodeLocationXY(RandPenguinNum)
-            if(!Global.StartFlag) this.LoadPenguin(RandPenguinNum);
+            if(!Global.CountDownFlag) this.LoadPenguin(RandPenguinNum);
         },20)
     },
 

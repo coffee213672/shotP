@@ -5,6 +5,8 @@ cc.Class({
     properties: {
         period:cc.Label,
 
+        CountTime:cc.Node,
+
         EndBlack:cc.Node,
 
         button1:cc.Button,
@@ -21,6 +23,7 @@ cc.Class({
 
     onLoad () {
         this.timerX = 0
+        cc.sys.localStorage.setItem('CardNum',JSON.stringify([0,0,0]))
 
         this.button1.node.on('click',this.callback,this)
         this.button2.node.on('click',this.callback,this)

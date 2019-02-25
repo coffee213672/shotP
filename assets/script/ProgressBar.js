@@ -6,22 +6,33 @@ cc.Class({
     },
 
     progressbarMove:function(Ptype,newBarV,progressbar,bar_string){
-        var countT = 0
+        var countT = this.old_value[Ptype]
         if(newBarV > this.old_value[Ptype]){
-            for(var i=this.old_value[Ptype];i<=newBarV;i++){
-                this.wait(progressbar,i,bar_string,countT)
+            function addP(){
                 countT++
+                if(Global.test) return  //#1 避免重新loading出現錯誤
+                if(countT > newBarV) return false
+                progressbar.progress = (countT / 100)
+                bar_string.string = countT+'%';
+                setTimeout(addP,40)
             }
-        }else{
-            for(var i=this.old_value[Ptype];i>=newBarV;i--){
-                this.wait(progressbar,i,bar_string,countT)
-                countT++
+            addP();
+        }
+        else{
+            function cutP(){
+                countT--
+                if(Global.test) return  //#1 避免重新loading出現錯誤
+                if(countT < newBarV) return false
+                progressbar.progress = (countT / 100)
+                bar_string.string = countT+'%';
+                setTimeout(cutP,40)
             }
+            cutP();
         }
     },
 
     wait:function(progressBar,percent,barvalue,Xtime){
-        if(Global.test) return  //#1 避免重新loading出現錯誤
+        
         setTimeout(function(){
             progressBar.progress = (percent / 100);
             barvalue.string = percent+'%';
@@ -36,7 +47,7 @@ cc.Class({
 
     start () {
         this.callback = function(){
-            if(!Global.StartFlag){
+            if(!Global.StartCount){
                 var JerryProgressAry = JSON.parse(cc.sys.localStorage.getItem('progressbar'))
                 for(var i in JerryProgressAry){
                     this.progressbarMove(i,JerryProgressAry[i],this.node.children[i].children[0].getComponent(cc.ProgressBar),this.node.children[i].children[0].children[2].getComponent(cc.Label))
@@ -49,7 +60,7 @@ cc.Class({
                 this.unschedule(this.callback)
             } 
         }
-        this.schedule(this.callback, 2);
+        this.schedule(this.callback, 0.5);
     },
 
     // update (dt) {},
