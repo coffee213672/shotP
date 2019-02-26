@@ -5,8 +5,6 @@ cc.Class({
     properties: {
         period:cc.Label,
 
-        CountTime:cc.Node,
-
         EndBlack:cc.Node,
 
         button1:cc.Button,
@@ -59,10 +57,8 @@ cc.Class({
             var nowSn = cc.sys.localStorage.getItem('hsn')
             var PeriodLabelString = this.period
             if(nowSn != null){
-                if(parseInt(nowSn) > parseInt(Global.sn)){
-                    Global.sn = nowSn;
-                    PeriodLabelString.string = nowSn
-                } 
+                Global.sn = nowSn
+                PeriodLabelString.string = nowSn
             }else{
                 if(PeriodLabelString.string != '-----------') PeriodLabelString.string = '-----------'
             }

@@ -101,7 +101,7 @@ cc.Class({
         var act = cc.sequence(cc.scaleTo(0.3,0,1),cc.callFunc(function(){
             card.children[0].active = false;
             card.children[1].active = true;
-            var rnum = JSON.parse(cc.sys.localStorage.getItem('CardNum'))[Wcard]
+            var rnum = Global.card[Wcard]//JSON.parse(cc.sys.localStorage.getItem('CardNum'))[Wcard]
             var card_color = 'hf_0'+Math.ceil(rnum/13);
             var card_num = this.getnum(rnum%13);
             Global.card[Wcard] = rnum
@@ -147,15 +147,16 @@ cc.Class({
         this.resultP.active = false;
         Global.ShotFlag = false
         Global.CountDownFlag = false
-    },
 
-    start () {
-        var Jerry = this
         if(cc.sys.localStorage.getItem('hsn') == null){
             cc.sys.localStorage.setItem('hsn',20190226001)
         }else{
             cc.sys.localStorage.setItem('hsn',parseInt(cc.sys.localStorage.getItem('hsn'))+1)
         }
+    },
+
+    start () {
+        var Jerry = this
         setTimeout(function(){
             Jerry.getThreeNum();
         },45000)
