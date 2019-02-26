@@ -16,8 +16,7 @@ cc.Class({
                 setTimeout(addP,40)
             }
             addP();
-        }
-        else{
+        }else{
             function cutP(){
                 countT--
                 if(countT < newBarV) return false
