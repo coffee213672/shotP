@@ -41,9 +41,9 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.7748550114674161,
-      "y": 0.7748550114674161,
-      "z": 0.7748550114674161
+      "x": 0.3981426886792453,
+      "y": 0.3981426886792453,
+      "z": 0.3981426886792453
     },
     "_quat": {
       "__type__": "cc.Quat",
@@ -5307,7 +5307,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 199.45,
+      "width": 151.01,
       "height": 40
     },
     "_anchorPoint": {
@@ -5354,8 +5354,8 @@
     "_srcBlendFactor": 1,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "2019013001",
-    "_N$string": "2019013001",
+    "_string": "-----------",
+    "_N$string": "-----------",
     "_fontSize": 44,
     "_lineHeight": 40,
     "_enableWrapText": true,

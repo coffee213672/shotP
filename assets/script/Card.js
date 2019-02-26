@@ -151,6 +151,11 @@ cc.Class({
 
     start () {
         var Jerry = this
+        if(cc.sys.localStorage.getItem('hsn') == null){
+            cc.sys.localStorage.setItem('hsn',20190226001)
+        }else{
+            cc.sys.localStorage.setItem('hsn',parseInt(cc.sys.localStorage.getItem('hsn'))+1)
+        }
         setTimeout(function(){
             Jerry.getThreeNum();
         },45000)

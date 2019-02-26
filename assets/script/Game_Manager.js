@@ -24,8 +24,7 @@ cc.Class({
 
     onLoad () {
         this.timerX = 0
-        cc.sys.localStorage.setItem('CardNum',JSON.stringify([0,0,0]))
-
+        cc.sys.localStorage.setItem('CardNum',JSON.stringify([0,0,0])) 
         this.CT = 0
 
         this.button1.node.on('click',this.callback,this)
@@ -56,11 +55,18 @@ cc.Class({
             cc.sys.localStorage.setItem('progressbar',JSON.stringify(JerryProgressAry))
         },5)
 
-        // this.schedule(function(){
-        //     if(Global.sn != cc.sys.localStorage.getItem('sn')) {
-                
-        //     }
-        // },0.5)
+        this.schedule(function(){
+            var nowSn = cc.sys.localStorage.getItem('hsn')
+            var PeriodLabelString = this.period
+            if(nowSn != null){
+                if(parseInt(nowSn) > parseInt(Global.sn)){
+                    Global.sn = nowSn;
+                    PeriodLabelString.string = nowSn
+                } 
+            }else{
+                if(PeriodLabelString.string != '-----------') PeriodLabelString.string = '-----------'
+            }
+        },0.5)
     },
 
     update (dt) {
