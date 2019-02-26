@@ -29,14 +29,6 @@ cc.Class({
         }
     },
 
-    wait:function(progressBar,percent,barvalue,Xtime){
-        
-        setTimeout(function(){
-            progressBar.progress = (percent / 100);
-            barvalue.string = percent+'%';
-        },50 + (Xtime*30))
-    },
-
     onLoad () {
         cc.sys.localStorage.setItem('progressbar',JSON.stringify([0,0,0]))
         this.old_value = [0,0,0]

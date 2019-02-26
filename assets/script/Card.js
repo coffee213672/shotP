@@ -101,7 +101,7 @@ cc.Class({
         var act = cc.sequence(cc.scaleTo(0.3,0,1),cc.callFunc(function(){
             card.children[0].active = false;
             card.children[1].active = true;
-            var rnum = Global.card[Wcard]//JSON.parse(cc.sys.localStorage.getItem('CardNum'))[Wcard]
+            var rnum = Global.card[Wcard]
             var card_color = 'hf_0'+Math.ceil(rnum/13);
             var card_num = this.getnum(rnum%13);
             Global.card[Wcard] = rnum
