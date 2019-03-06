@@ -125,8 +125,8 @@ cc.Class({
                 DBA.dragonAtlasAsset = res2;
                 DBA.armatureName = info[2]
                 DBA.playAnimation(DBA.armatureName,1);
-                if(Global.ShotType == 1) cc.audioEngine.play(this.resultShot, false, 0.5)
-                else cc.audioEngine.play(this.resultMiss, false, 0.5)
+                if(Global.ShotType == 1 && Global.AudioStatus != 1) cc.audioEngine.play(this.resultShot, false, 0.5)
+                else if(Global.AudioStatus != 1)cc.audioEngine.play(this.resultMiss, false, 0.5)
                 DBA.addEventListener(dragonBones.EventObject.COMPLETE, this.chgtype, this);
             })
         })
@@ -137,7 +137,7 @@ cc.Class({
     },
 
     PlayEffectSound:function(z){
-        cc.audioEngine.play(this.cardN, false, 0.5)
+        if(Global.AudioStatus != 1) cc.audioEngine.play(this.cardN, false, 0.5)
     },
 
     onLoad () {
