@@ -15,6 +15,7 @@ module.exports = {
             ['in/happyfeet_ske','in/happyfeet_tex','Goal'],
             ['hit/happyfeet2_ske','hit/happyfeet2_tex','Sprite'],
             ['out/happyfeet3_ske','out/happyfeet3_tex','Sprite']
-        ],  //  三種過場動畫
+        ],
+    infoRRP:['in/in','hit/hit','out/out'],  //  三種過場動畫
     resultRP:['goal','hit','miss'], //  三種結果
 }

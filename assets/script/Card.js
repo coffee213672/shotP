@@ -123,18 +123,25 @@ cc.Class({
     },
 
     ActiveLoadDBA:function(){
-        var DBA = this.NodeDBA.getComponent(dragonBones.ArmatureDisplay);
-        var info = Global.infoRP[Global.ShotType-1]
-        cc.loader.loadRes("ShotAnim/"+info[0], dragonBones.DragonBonesAsset, (err, res) => {
-            cc.loader.loadRes("ShotAnim/"+info[1], dragonBones.DragonBonesAtlasAsset, (err2, res2) => {
-                DBA.dragonAsset = res;
-                DBA.dragonAtlasAsset = res2;
-                DBA.armatureName = info[2]
-                DBA.playAnimation(DBA.armatureName,1);
-                if(Global.ShotType == 1 && Global.AudioStatus != 1) cc.audioEngine.play(this.resultShot, false, 0.5)
-                else if(Global.AudioStatus != 1)cc.audioEngine.play(this.resultMiss, false, 0.5)
-                DBA.addEventListener(dragonBones.EventObject.COMPLETE, this.chgtype, this);
-            })
+        // var DBA = this.NodeDBA.getComponent(dragonBones.ArmatureDisplay);
+        var info = Global.infoRRP[Global.ShotType-1]
+        // cc.loader.loadRes("ShotAnim/"+info[0], dragonBones.DragonBonesAsset, (err, res) => {
+        //     cc.loader.loadRes("ShotAnim/"+info[1], dragonBones.DragonBonesAtlasAsset, (err2, res2) => {
+        //         DBA.dragonAsset = res;
+        //         DBA.dragonAtlasAsset = res2;
+        //         DBA.armatureName = info[2]
+        //         DBA.playAnimation(DBA.armatureName,1);
+        //         if(Global.ShotType == 1 && Global.AudioStatus != 1) cc.audioEngine.play(this.resultShot, false, 0.5)
+        //         else if(Global.AudioStatus != 1)cc.audioEngine.play(this.resultMiss, false, 0.5)
+        //         DBA.addEventListener(dragonBones.EventObject.COMPLETE, this.chgtype, this);
+        //     })
+        // })
+        cc.loader.loadRes("ShotAnim/"+info, (err, res) => {
+            var newNode = cc.instantiate(res);
+            newNode.x = 316
+            newNode.y = 265
+            newNode.getComponent(dragonBones.ArmatureDisplay).addEventListener(dragonBones.EventObject.COMPLETE, this.chgtype, this)
+            cc.director.getScene().addChild(newNode);
         })
     },
 
