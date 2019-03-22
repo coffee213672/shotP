@@ -4,6 +4,10 @@ cc.Class({
 
     properties: {
         EndBlack:cc.Node,
+        // CountDownAudio:{
+        //     type:cc.AudioClip,
+        //     default:null
+        // }
     },
 
     onLoad () {
@@ -15,6 +19,7 @@ cc.Class({
             var CardNumAry = JSON.parse(cc.sys.localStorage.getItem('CardNum'))
             if((CardNumAry.indexOf(0) == -1)){
                 this.EndBlack.setSiblingIndex(13)
+                this.node.setSiblingIndex(14)
                 this.EndBlack.active = true
                 this.node.children[0].active = true
                 var Jerry = this
@@ -25,6 +30,7 @@ cc.Class({
                     counter--
                     if(counter == 0){
                         Jerry.EndBlack.setSiblingIndex(12)
+                        Jerry.node.setSiblingIndex(10)
                         Jerry.EndBlack.active = false
                         Jerry.node.children[0].active = false
                         Global.CountDownFlag = true

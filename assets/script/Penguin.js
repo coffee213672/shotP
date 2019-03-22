@@ -3,6 +3,10 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
+        // PenguinAnimAudio:{
+        //     type:cc.AudioClip,
+        //     default:null
+        // }
     },
 
     LoadPenguin:function(RPN){

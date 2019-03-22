@@ -6,12 +6,6 @@ cc.Class({
         period:cc.Label,
 
         EndBlack:cc.Node,
-
-        button1:cc.Button,
-
-        button2:cc.Button,
-
-        button3:cc.Button,
     },
 
     gameOver:function(){
@@ -24,43 +18,31 @@ cc.Class({
         this.timerX = 0
         cc.sys.localStorage.setItem('CardNum',JSON.stringify([0,0,0])) 
         this.CT = 0
+        Global.sn = 0;
 
-        this.button1.node.on('click',this.callback,this)
-        this.button2.node.on('click',this.callback,this)
-        this.button3.node.on('click',this.callback,this)
-    },
-
-    //三種結果按鈕
-    callback:function(Button){
-        switch (Button.node._name){
-            case 'button1': // 射門
-                cc.sys.localStorage.setItem('CardNum',JSON.stringify([1,29,15]))
-            break
-            case 'button2': // 撞柱
-                cc.sys.localStorage.setItem('CardNum',JSON.stringify([1,29,16]))
-            break
-            default: // 界外
-                cc.sys.localStorage.setItem('CardNum',JSON.stringify([1,29,17]))
+        if(cc.sys.localStorage.getItem('hsn') == null || isNaN(parseInt(cc.sys.localStorage.getItem('hsn'))) ){
+            cc.sys.localStorage.setItem('hsn','-----------')
         }
     },
 
     start () {
-        this.schedule(function(){
-            var JerryProgressAry = new Array();
-            JerryProgressAry[0] = Math.floor(Math.random()*100);
-            JerryProgressAry[1] = Math.floor(Math.random()*(100-JerryProgressAry[0]));
-            JerryProgressAry[2] = 100 - JerryProgressAry[0] - JerryProgressAry[1];
-            cc.sys.localStorage.setItem('progressbar',JSON.stringify(JerryProgressAry))
-        },5)
+        //熱度條
+        // this.schedule(function(){
+        //     var JerryProgressAry = new Array();
+        //     JerryProgressAry[0] = Math.floor(Math.random()*100);
+        //     JerryProgressAry[1] = Math.floor(Math.random()*(100-JerryProgressAry[0]));
+        //     JerryProgressAry[2] = 100 - JerryProgressAry[0] - JerryProgressAry[1];
+        //     cc.sys.localStorage.setItem('progressbar',JSON.stringify(JerryProgressAry))
+        // },5)
 
         this.schedule(function(){
             var nowSn = cc.sys.localStorage.getItem('hsn')
             var PeriodLabelString = this.period
-            if(nowSn != null){
+            if(nowSn != null && Global.sn == 0){
                 Global.sn = nowSn
                 PeriodLabelString.string = nowSn
             }else{
-                if(PeriodLabelString.string != '-----------') PeriodLabelString.string = '-----------'
+                if(Global.sn != 0 && (nowSn != Global.sn)) this.gameOver() 
             }
         },0.5)
     },

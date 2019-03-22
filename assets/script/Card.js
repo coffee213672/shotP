@@ -15,6 +15,11 @@ cc.Class({
 
         resultP:cc.Node,
 
+        // ShowResultAudio:{
+        //     type:cc.AudioClip,
+        //     default:null
+        // },
+
         cardN:{
             type:cc.AudioClip,
             default: null,
@@ -32,9 +37,8 @@ cc.Class({
 
     },
 
-    ReadyToStart:function(){
+    ReadyToStart:function(CardNumAry){
         var Jerry = this
-        var CardNumAry = JSON.parse(cc.sys.localStorage.getItem('CardNum'))
         Global.StartFlag = true
         Global.card = CardNumAry;
         for(let i in Global.card){
@@ -46,7 +50,7 @@ cc.Class({
             },parseInt(i)*800)
         }
         setTimeout(function(){
-            var together = cc.sequence(cc.spawn(cc.moveTo(0.5,cc.v2(231,-195)),cc.scaleTo(0.5,0.4,0.4)),cc.callFunc(function(){
+            var together = cc.sequence(cc.spawn(cc.moveTo(0.5,cc.v2(214,-195)),cc.scaleTo(0.5,0.4,0.4)),cc.callFunc(function(){
                 Jerry.getShotType();
                 Jerry.ActiveLoadDBA();
             },this))
@@ -84,11 +88,11 @@ cc.Class({
         var num2 = this.getnumN(Global.card[1]%13);
         var num3 = this.getnumN(Global.card[2]%13);
         var result = this.resultP
-        if((num1 < num3 && num2 > num3) || (num1 > num3 && num2 < num3)){
+        if((num1 < num2 && num3 > num2) || (num1 > num2 && num3 < num2)){
             Global.ShotType = 1
-        }else if(num1 == num3 || num3 == num2){
+        }else if(num1 == num2 || num3 == num2){
             Global.ShotType = 2
-        }else if((num1 < num3 && num3 > num2) || (num1 > num3 && num2 > num3)){
+        }else if((num1 < num2 && num2 > num3) || (num1 > num2 && num3 > num2)){
             Global.ShotType = 3
         }
 
@@ -98,19 +102,21 @@ cc.Class({
     },
 
     JerryOpenCard:function(card,Wcard){
+        var rnum = Global.card[Wcard]
+        var card_color = 'hf_0'+Math.ceil(rnum/13);
+        var card_num = this.getnum(rnum%13);
+        Global.card[Wcard] = rnum
+        cc.loader.loadRes("Card/"+card_color, cc.SpriteFrame, function (err, spriteFrame) {
+            card.children[2].getComponent(cc.Sprite).spriteFrame = spriteFrame;
+        });
+        cc.loader.loadRes("Card/"+card_num, cc.SpriteFrame, function (err, spriteFrame) {
+            card.children[3].getComponent(cc.Sprite).spriteFrame = spriteFrame;
+        });
         var act = cc.sequence(cc.scaleTo(0.3,0,1),cc.callFunc(function(){
             card.children[0].active = false;
             card.children[1].active = true;
-            var rnum = Global.card[Wcard]
-            var card_color = 'hf_0'+Math.ceil(rnum/13);
-            var card_num = this.getnum(rnum%13);
-            Global.card[Wcard] = rnum
-            cc.loader.loadRes("Card/"+card_color, cc.SpriteFrame, function (err, spriteFrame) {
-                card.children[2].getComponent(cc.Sprite).spriteFrame = spriteFrame;
-            });
-            cc.loader.loadRes("Card/"+card_num, cc.SpriteFrame, function (err, spriteFrame) {
-                card.children[3].getComponent(cc.Sprite).spriteFrame = spriteFrame;
-            });
+            card.children[2].active = true;
+            card.children[3].active = true;
             card.runAction(cc.scaleTo(0.3,1,1))
         },this))
         return act
@@ -147,29 +153,35 @@ cc.Class({
         this.resultP.active = false;
         Global.ShotFlag = false
         Global.CountDownFlag = false
-
-        if(cc.sys.localStorage.getItem('hsn') == null){
-            cc.sys.localStorage.setItem('hsn',20190226001)
-        }else{
-            cc.sys.localStorage.setItem('hsn',parseInt(cc.sys.localStorage.getItem('hsn'))+1)
-        }
     },
 
     start () {
-        var Jerry = this
-        setTimeout(function(){
-            Jerry.getThreeNum();
-        },45000)
+        // var Jerry = this
+        // setTimeout(function(){
+        //     Jerry.getThreeNum();
+        // },45000)
 
         this.callback = function(){
             var CardNumAry = JSON.parse(cc.sys.localStorage.getItem('CardNum'))
             if((CardNumAry.indexOf(0) == -1) && (Global.CountDownFlag)){
-                this.ReadyToStart();
+                this.ReadyToStart(CardNumAry);
                 this.unschedule(this.callback)
             }
         }
         this.schedule(this.callback, 1);
     },
+
+    //正式上web須測試
+    lateUpdate() {
+        if (cc.sys.isBrowser) {
+            let context = cc.sys.__audioSupport.context;
+            if(context != undefined){
+                if (context.state === 'suspended') {
+                    context.resume()
+                }
+            }
+        }
+    }
 
     // update (dt) {},
 });
