@@ -11,7 +11,11 @@ cc.Class({
 
         ball:cc.Node,
 
-        NodeDBA:cc.Node,
+        NodeDBA1:cc.Node,
+
+        NodeDBA2:cc.Node,
+
+        NodeDBA3:cc.Node,
 
         resultP:cc.Node,
 
@@ -123,8 +127,16 @@ cc.Class({
     },
 
     ActiveLoadDBA:function(){
-        // var DBA = this.NodeDBA.getComponent(dragonBones.ArmatureDisplay);
-        var info = Global.infoRRP[Global.ShotType-1]
+        //以下是龍骨動畫已預先加載，透過"激活"呈現動畫
+        var DBN = this['NodeDBA'+Global.ShotType]
+        var DBA = this['NodeDBA'+Global.ShotType].getComponent(dragonBones.ArmatureDisplay)
+        DBN.active = true
+        if(Global.ShotType == 1 && Global.AudioStatus != 1) cc.audioEngine.play(this.resultShot, false, 0.5)
+        else if(Global.AudioStatus != 1)cc.audioEngine.play(this.resultMiss, false, 0.5)
+        DBA.addEventListener(dragonBones.EventObject.COMPLETE, this.chgtype, this);
+
+        //以下是龍骨動態加載
+        // var info = Global.infoRRP[Global.ShotType-1]
         // cc.loader.loadRes("ShotAnim/"+info[0], dragonBones.DragonBonesAsset, (err, res) => {
         //     cc.loader.loadRes("ShotAnim/"+info[1], dragonBones.DragonBonesAtlasAsset, (err2, res2) => {
         //         DBA.dragonAsset = res;
@@ -136,13 +148,15 @@ cc.Class({
         //         DBA.addEventListener(dragonBones.EventObject.COMPLETE, this.chgtype, this);
         //     })
         // })
-        cc.loader.loadRes("ShotAnim/"+info, (err, res) => {
-            var newNode = cc.instantiate(res);
-            newNode.x = 316
-            newNode.y = 265
-            newNode.getComponent(dragonBones.ArmatureDisplay).addEventListener(dragonBones.EventObject.COMPLETE, this.chgtype, this)
-            cc.director.getScene().addChild(newNode);
-        })
+        
+        //以下是龍骨預製prefab動態加載
+        // cc.loader.loadRes("ShotAnim/"+info, (err, res) => {
+        //     var newNode = cc.instantiate(res);
+        //     newNode.x = 316
+        //     newNode.y = 265
+        //     newNode.getComponent(dragonBones.ArmatureDisplay).addEventListener(dragonBones.EventObject.COMPLETE, this.chgtype, this)
+        //     cc.director.getScene().addChild(newNode);
+        // })
     },
 
     chgtype:function(){
