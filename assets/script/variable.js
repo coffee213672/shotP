@@ -6,6 +6,7 @@ module.exports = {
     StartCount: false,  //  開始倒數
     test:false, //  開始結束倒數
     sn:0,   //  本局遊戲期數
+    OldSn:0, // 上期遊戲期數
     ShotType:0, //  1:射門 2:撞柱 3:界外
     AudioStatus: 0,
     Penguin:[['PinkPenguin/game_p_ske','PinkPenguin/game_p_tex','game_p'],

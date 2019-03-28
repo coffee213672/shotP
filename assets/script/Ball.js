@@ -94,7 +94,6 @@ cc.Class({
 
     onLoad () {
         cc.director.getCollisionManager().enabledDebugDraw = false
-
         Global.ShotType = 0;
         this.pathtype = 0;
         //ball層級6 getSiblingIndex setSiblingIndex 

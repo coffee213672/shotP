@@ -13,11 +13,11 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Node",
+    "_name": "ResultOut",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_level": 2,
     "_components": [
       {
@@ -37,8 +37,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 0,
-      "height": 0
+      "width": 520,
+      "height": 273
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -72,7 +72,7 @@
     "_id": ""
   },
   {
-    "__type__": "dragonBones.ArmatureDisplay",
+    "__type__": "cc.Sprite",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -81,19 +81,22 @@
     "_enabled": true,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_armatureName": "Sprite",
-    "_animationName": "Sprite",
-    "playTimes": 1,
-    "_N$dragonAsset": {
-      "__uuid__": "437b254a-6fc1-4697-88c6-6c4d8f4681f5"
+    "_spriteFrame": {
+      "__uuid__": "9aa1915c-75d8-4894-b712-c6a1062d2bba"
     },
-    "_N$dragonAtlasAsset": {
-      "__uuid__": "be24d24b-94eb-4f38-a7ba-c5998b9c3d02"
+    "_type": 0,
+    "_sizeMode": 1,
+    "_fillType": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
     },
-    "_N$_defaultArmatureIndex": 0,
-    "_N$_animationIndex": 1,
-    "_N$timeScale": 1,
-    "_N$debugBones": false,
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_state": 0,
+    "_atlas": null,
     "_id": ""
   },
   {
@@ -104,7 +107,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "03GP5F/ztOHYNvYUlM1oSa",
+    "fileId": "3fXa2o46dIE7rO9ZGypS0h",
     "sync": false
   }
 ]

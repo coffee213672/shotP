@@ -1,6 +1,6 @@
 {
   "ver": "2.3.0",
-  "uuid": "f5d964e7-a9e1-4a55-945f-fe2753a83c8f",
+  "uuid": "ca732895-219a-4750-b4ce-45041fba4749",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -9,8 +9,8 @@
   "subMetas": {
     "happyfeet3_tex": {
       "ver": "1.0.3",
-      "uuid": "3e258172-6eb4-4979-a73f-af4f4eb6f864",
-      "rawTextureUuid": "f5d964e7-a9e1-4a55-945f-fe2753a83c8f",
+      "uuid": "7058a1c8-71ad-4ad8-8eae-c532fbb0e5d2",
+      "rawTextureUuid": "ca732895-219a-4750-b4ce-45041fba4749",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,

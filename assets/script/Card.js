@@ -3,21 +3,21 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        card1:cc.Node,
+        card1: cc.Node,
 
-        card2:cc.Node,
+        card2: cc.Node,
 
-        card3:cc.Node,
+        card3: cc.Node,
 
-        ball:cc.Node,
+        ball: cc.Node,
 
-        NodeDBA1:cc.Node,
+        NodeDBA1: cc.Node,
 
-        NodeDBA2:cc.Node,
+        NodeDBA2: cc.Node,
 
-        NodeDBA3:cc.Node,
+        NodeDBA3: cc.Node,
 
-        resultP:cc.Node,
+        // resultP: cc.Node,
 
         // ShowResultAudio:{
         //     type:cc.AudioClip,
@@ -54,14 +54,15 @@ cc.Class({
             },parseInt(i)*800)
         }
         setTimeout(function(){
-            var together = cc.sequence(cc.spawn(cc.moveTo(0.5,cc.v2(214,-195)),cc.scaleTo(0.5,0.4,0.4)),cc.callFunc(function(){
+            var together = cc.sequence(cc.spawn(cc.moveTo(0.5,cc.v2(214,-195)),cc.scaleTo(0.5,0.43,0.43)),cc.callFunc(function(){
                 Jerry.getShotType();
+                Jerry.node.setSiblingIndex(13)
                 Jerry.ActiveLoadDBA();
             },this))
             Jerry.node.runAction(together)
         },3200)
     },
-
+    // 自動隨機產生號碼
     getThreeNum:function(){
         var randnum = 0;
         do{
@@ -91,7 +92,6 @@ cc.Class({
         var num1 = this.getnumN(Global.card[0]%13);
         var num2 = this.getnumN(Global.card[1]%13);
         var num3 = this.getnumN(Global.card[2]%13);
-        var result = this.resultP
         if((num1 < num2 && num3 > num2) || (num1 > num2 && num3 < num2)){
             Global.ShotType = 1
         }else if(num1 == num2 || num3 == num2){
@@ -99,10 +99,10 @@ cc.Class({
         }else if((num1 < num2 && num2 > num3) || (num1 > num2 && num3 > num2)){
             Global.ShotType = 3
         }
-
-        cc.loader.loadRes("result/"+Global.resultRP[Global.ShotType -1], cc.SpriteFrame, function (err, spriteFrame) {
-            result.getComponent(cc.Sprite).spriteFrame = spriteFrame;
-        });
+        // var result = this.resultP
+        // cc.loader.loadRes("result/"+Global.resultRP[Global.ShotType -1], cc.SpriteFrame, function (err, spriteFrame) {
+        //     result.getComponent(cc.Sprite).spriteFrame = spriteFrame;
+        // });
     },
 
     JerryOpenCard:function(card,Wcard){
@@ -148,7 +148,7 @@ cc.Class({
         //         DBA.addEventListener(dragonBones.EventObject.COMPLETE, this.chgtype, this);
         //     })
         // })
-        
+
         //以下是龍骨預製prefab動態加載
         // cc.loader.loadRes("ShotAnim/"+info, (err, res) => {
         //     var newNode = cc.instantiate(res);
@@ -171,7 +171,7 @@ cc.Class({
         Global.card = [0,0,0];
         this.numArray = new Array();
         this.SendToBallFlag = false;
-        this.resultP.active = false;
+        // this.resultP.active = false;
         Global.ShotFlag = false
         Global.CountDownFlag = false
     },

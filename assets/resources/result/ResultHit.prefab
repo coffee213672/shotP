@@ -13,11 +13,11 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Node",
+    "_name": "ResultHit",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_level": 2,
     "_components": [
       {
@@ -37,8 +37,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 0,
-      "height": 0
+      "width": 520,
+      "height": 273
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -72,7 +72,7 @@
     "_id": ""
   },
   {
-    "__type__": "dragonBones.ArmatureDisplay",
+    "__type__": "cc.Sprite",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -81,19 +81,22 @@
     "_enabled": true,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_armatureName": "Goal",
-    "_animationName": "Goal",
-    "playTimes": 1,
-    "_N$dragonAsset": {
-      "__uuid__": "cdd9fa4e-50da-4c56-beea-28eebcec294d"
+    "_spriteFrame": {
+      "__uuid__": "873f678f-6352-4a1c-aa7a-7c6b6540572d"
     },
-    "_N$dragonAtlasAsset": {
-      "__uuid__": "e93e848b-5c95-4709-9512-d439823665e5"
+    "_type": 0,
+    "_sizeMode": 1,
+    "_fillType": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
     },
-    "_N$_defaultArmatureIndex": 0,
-    "_N$_animationIndex": 1,
-    "_N$timeScale": 1,
-    "_N$debugBones": false,
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_state": 0,
+    "_atlas": null,
     "_id": ""
   },
   {
@@ -104,7 +107,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "bb+5XIXhpFAqJ/zgQXQ+oP",
+    "fileId": "9fh+YZSUpPrJmodi3a9mPd",
     "sync": false
   }
 ]
