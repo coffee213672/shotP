@@ -34,6 +34,11 @@ cc.Class({
             default: null,
         },
 
+        resultHit:{
+            type:cc.AudioClip,
+            default: null,
+        },
+
         resultMiss:{
             type:cc.AudioClip,
             default: null,
@@ -131,8 +136,9 @@ cc.Class({
         var DBN = this['NodeDBA'+Global.ShotType]
         var DBA = this['NodeDBA'+Global.ShotType].getComponent(dragonBones.ArmatureDisplay)
         DBN.active = true
-        if(Global.ShotType == 1 && Global.AudioStatus != 1) cc.audioEngine.play(this.resultShot, false, 0.5)
-        else if(Global.AudioStatus != 1)cc.audioEngine.play(this.resultMiss, false, 0.5)
+        if(Global.ShotType == 1 && Global.AudioStatus != 1) cc.audioEngine.play(this.resultShot, false, 0.4)
+        else if(Global.ShotType == 2 && Global.AudioStatus != 1)cc.audioEngine.play(this.resultHit, false, 0.4)
+        else if(Global.ShotType == 3 && Global.AudioStatus != 1)cc.audioEngine.play(this.resultMiss, false, 0.4)
         DBA.addEventListener(dragonBones.EventObject.COMPLETE, this.chgtype, this);
 
         //以下是龍骨動態加載
@@ -164,7 +170,7 @@ cc.Class({
     },
 
     PlayEffectSound:function(z){
-        if(Global.AudioStatus != 1) cc.audioEngine.play(this.cardN, false, 0.5)
+        if(Global.AudioStatus != 1) cc.audioEngine.play(this.cardN, false, 2)
     },
 
     onLoad () {
@@ -192,17 +198,17 @@ cc.Class({
         this.schedule(this.callback, 1);
     },
 
-    //正式上web須測試
-    lateUpdate() {
-        if (cc.sys.isBrowser) {
-            let context = cc.sys.__audioSupport.context;
-            if(context != undefined){
-                if (context.state === 'suspended') {
-                    context.resume()
-                }
-            }
-        }
-    }
+    // 正式上web須測試 (Chrome 71版之後網頁音訊不會自動播放，此方法可能可以解決)
+    // lateUpdate() {
+    //     if (cc.sys.isBrowser) {
+    //         let context = cc.sys.__audioSupport.context;
+    //         if(context != undefined){
+    //             if (context.state === 'suspended') {
+    //                 context.resume()
+    //             }
+    //         }
+    //     }
+    // }
 
     // update (dt) {},
 });

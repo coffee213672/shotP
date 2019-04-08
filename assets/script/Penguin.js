@@ -3,10 +3,15 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // PenguinAnimAudio:{
-        //     type:cc.AudioClip,
-        //     default:null
-        // }
+        PenguinAnimAudio:{
+            type:cc.AudioClip,
+            default:null
+        },
+
+        PenguinAnimAudio2:{
+            type:cc.AudioClip,
+            default:null
+        }
     },
 
     LoadPenguin:function(RPN){
@@ -19,6 +24,10 @@ cc.Class({
                 RP.dragonAtlasAsset = res2;
                 RP.armatureName = PenguinArray[2]
                 RP.playAnimation(RP.dragonAsset._dragonBonesData.stage.animationNames[0],1);
+                if(Global.AudioStatus != 1) {
+                    if(RPN == 1) cc.audioEngine.play(this.PenguinAnimAudio2, false, 0.4)
+                    else cc.audioEngine.play(this.PenguinAnimAudio, false, 0.4)
+                }
                 RP.addEventListener(dragonBones.EventObject.COMPLETE, this.removeDB, this);
             })
         })

@@ -9,6 +9,7 @@ module.exports = {
     OldSn:0, // 上期遊戲期數
     ShotType:0, //  1:射門 2:撞柱 3:界外
     AudioStatus: 0,
+    CloseOpenBGM:false,
     Penguin:[['PinkPenguin/game_p_ske','PinkPenguin/game_p_tex','game_p'],
             ['BlackPenguin1/NewProject_2_ske','BlackPenguin1/NewProject_2_tex','MovieClip'],
             ['BlackPenguin2/b2_ske','BlackPenguin2/b2_tex','Sprite']],  //  企鵝資料、路徑

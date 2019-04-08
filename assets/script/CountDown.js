@@ -4,10 +4,10 @@ cc.Class({
 
     properties: {
         EndBlack:cc.Node,
-        // CountDownAudio:{
-        //     type:cc.AudioClip,
-        //     default:null
-        // }
+        CountDownAudio:{
+            type:cc.AudioClip,
+            default:null
+        }
     },
 
     onLoad () {
@@ -27,10 +27,8 @@ cc.Class({
                 var counter = 4;
                 function showCountDown(){
                     counter--
-                    cc.log(counter)
                     switch(counter){
                         case 0:
-                        cc.log('into 0')
                             Jerry.EndBlack.setSiblingIndex(12)
                             Jerry.node.setSiblingIndex(10)
                             Jerry.EndBlack.active = false
@@ -40,13 +38,16 @@ cc.Class({
                         case 1:
                             Jerry.node.children[0].children[1].active = false
                             Jerry.node.children[0].children[2].active = true
+                            if(Global.AudioStatus != 1) cc.audioEngine.play(Jerry.CountDownAudio, false, 0.3)
                         break
                         case 2:
                             Jerry.node.children[0].children[0].active = false
                             Jerry.node.children[0].children[1].active = true
+                            if(Global.AudioStatus != 1) cc.audioEngine.play(Jerry.CountDownAudio, false, 0.3)
                         break
                         case 3:
                             Jerry.node.children[0].children[0].active = true
+                            if(Global.AudioStatus != 1) cc.audioEngine.play(Jerry.CountDownAudio, false, 0.3)
                         break
                     }
                     // 動態加載倒數秒數

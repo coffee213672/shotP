@@ -6,6 +6,16 @@ cc.Class({
         period: cc.Label,
 
         EndBlack: cc.Node,
+
+        ShotMiss:{
+            type:cc.AudioClip,
+            default:null
+        },
+
+        ShotSuccess:{
+            type:cc.AudioClip,
+            default:null
+        },
     },
 
     gameOver:function(){
@@ -18,6 +28,7 @@ cc.Class({
         this.timerX = 0
         cc.sys.localStorage.setItem('CardNum',JSON.stringify([0,0,0])) 
         this.CT = 0
+        Global.CloseOpenBGM = false
         Global.sn = 0
         if(cc.sys.localStorage.getItem('hsn') == null || isNaN(parseInt(cc.sys.localStorage.getItem('hsn'))) ){
             cc.sys.localStorage.setItem('hsn','-----------')
@@ -63,10 +74,17 @@ cc.Class({
         if((this.timerX > 3) && (!this.EndBlack.active)){ //若有比EndBlack層級高一層-2
             this.period.node.color = new cc.Color(255,255,255)
             this.EndBlack.active = true
-            if(Global.ShotType == 1) this.node.children[this.node.childrenCount - 1].children[0].active = true
-            else if(Global.ShotType == 2) this.node.children[this.node.childrenCount - 1].children[1].active = true
-            else this.node.children[this.node.childrenCount - 1].children[2].active = true
-            
+            Global.CloseOpenBGM = true
+            if(Global.ShotType == 1) {
+                this.node.children[this.node.childrenCount - 1].children[0].active = true
+                if(Global.AudioStatus != 1) cc.audioEngine.play(this.ShotSuccess, false, 0.5)
+            }else if(Global.ShotType == 2) {
+                this.node.children[this.node.childrenCount - 1].children[1].active = true
+                if(Global.AudioStatus != 1) cc.audioEngine.play(this.ShotMiss, false, 0.5)
+            }else {
+                this.node.children[this.node.childrenCount - 1].children[2].active = true
+                if(Global.AudioStatus != 1) cc.audioEngine.play(this.ShotMiss, false, 0.5)
+            }
         } 
     },
 });

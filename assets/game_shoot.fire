@@ -2508,13 +2508,13 @@
       "__uuid__": "b1cbc951-ced0-4a90-a1de-cb9388f988f3"
     },
     "HitGoal": {
-      "__uuid__": "dad9c95a-051b-4231-9d44-6e0e322a6178"
+      "__uuid__": "59e972e3-9a79-45c8-93fd-feb65d010955"
     },
     "OutInWater": {
-      "__uuid__": "d34aee1e-0506-4248-b131-7dfc52076e52"
+      "__uuid__": "c6828ce0-23d6-42a6-bedd-32e6e3851ff9"
     },
     "Kick": {
-      "__uuid__": "2f257167-f54f-4f4d-9927-9b91e47fd0d4"
+      "__uuid__": "bbbfb318-772c-451c-8ccc-d01a9c5f1a05"
     },
     "_id": "34OBgJOK1N96biRWvdG+FX"
   },
@@ -4233,13 +4233,16 @@
       "__id__": 62
     },
     "cardN": {
-      "__uuid__": "86273f8e-0b68-4770-8c33-0401bad85ac6"
+      "__uuid__": "76eeddd0-4a40-49d9-b2d2-b34cfccb1b4f"
     },
     "resultShot": {
-      "__uuid__": "eb61ed04-b7a3-4997-b637-e665b352ab31"
+      "__uuid__": "ffa8ceee-b748-46c9-8cf1-59b7d069e330"
+    },
+    "resultHit": {
+      "__uuid__": "51b27241-7e99-4e18-b4fc-16b921745a3b"
     },
     "resultMiss": {
-      "__uuid__": "1fac47bd-b6d6-45e4-adce-fcd139f79103"
+      "__uuid__": "58169698-85a0-4850-bb87-9b4bb9ff4cc3"
     },
     "_id": "f8d6TF/gFG/oVp8o/Yl9Pi"
   },
@@ -4680,6 +4683,9 @@
     "EndBlack": {
       "__id__": 64
     },
+    "CountDownAudio": {
+      "__uuid__": "881e647c-cd57-4dec-b77b-b34b6ded1c43"
+    },
     "_id": "03sCp/IjlIy7WsnodqWzWw"
   },
   {
@@ -4750,6 +4756,12 @@
       "__id__": 105
     },
     "_enabled": true,
+    "PenguinAnimAudio": {
+      "__uuid__": "f51e2e08-9a26-4ee5-9181-9f649a6378e1"
+    },
+    "PenguinAnimAudio2": {
+      "__uuid__": "5a2aa386-0c98-4a77-b1b9-0c3f6abd1ddf"
+    },
     "_id": "5fcyrqO9VPMbkwFzO+5qbk"
   },
   {
@@ -5241,6 +5253,12 @@
     "EndBlack": {
       "__id__": 64
     },
+    "ShotMiss": {
+      "__uuid__": "0c764de1-df65-4121-b27c-e658dacedf77"
+    },
+    "ShotSuccess": {
+      "__uuid__": "51765777-bd41-461d-b464-b6e910c302a3"
+    },
     "_id": "06BrQrIDROSaDk+w0kdoFG"
   },
   {
@@ -5312,7 +5330,10 @@
     },
     "_enabled": true,
     "BGM": {
-      "__uuid__": "d84ed7db-dcb5-4d9c-a52c-8ef5ffbbc304"
+      "__uuid__": "6df47708-6e72-4a80-ab14-2e850670b906"
+    },
+    "BGMOpen": {
+      "__uuid__": "4958e12e-0de5-400f-a27d-71db462fcf95"
     },
     "_id": "38yiWh05xO779R1fKyQQHh"
   }
