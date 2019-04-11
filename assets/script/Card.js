@@ -170,7 +170,7 @@ cc.Class({
     },
 
     PlayEffectSound:function(z){
-        if(Global.AudioStatus != 1) cc.audioEngine.play(this.cardN, false, 2)
+        if(Global.AudioStatus != 1) cc.audioEngine.play(this.cardN, false, 1)
     },
 
     onLoad () {
@@ -186,7 +186,7 @@ cc.Class({
         // var Jerry = this
         // setTimeout(function(){
         //     Jerry.getThreeNum();
-        // },45000)
+        // },5000)
 
         this.callback = function(){
             var CardNumAry = JSON.parse(cc.sys.localStorage.getItem('CardNum'))
